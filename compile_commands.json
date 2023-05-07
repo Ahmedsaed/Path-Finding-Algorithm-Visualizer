@@ -1,0 +1,18 @@
+[
+  {
+    "arguments": [
+      "/usr/bin/g++",
+      "-c",
+      "-Wall",
+      "-ggdb3",
+      "-I",
+      "include",
+      "-o",
+      "./build/shortest_path.out",
+      "./sources/main.cpp"
+    ],
+    "directory": "/home/ahmed/Documents/Projects/College/Path-Finding-Algorithm-Visualizer",
+    "file": "/home/ahmed/Documents/Projects/College/Path-Finding-Algorithm-Visualizer/sources/main.cpp",
+    "output": "/home/ahmed/Documents/Projects/College/Path-Finding-Algorithm-Visualizer/build/shortest_path.out"
+  }
+]
