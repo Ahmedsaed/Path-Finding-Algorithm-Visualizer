@@ -14,7 +14,11 @@ HEADER_FILES = $(wildcard ./include/*.h)
 INTEGRATION_TESTS_FILES = $(patsubst $(TEST_DIR)/integration/%.py,%,$(wildcard $(TEST_DIR)/integration/*.py))
 UNIT_TEST_FILES = $(patsubst %.c, %, $(notdir $(wildcard $(TEST_DIR)/unit/*.c)))
 
+ifeq ($(OS), Windows_NT)
+all: windows
+else
 all: build run
+endif
 
 build: setup_dirs
 	@${CC} ${CFlags} ${SOURCE_FILES} -o ./${BUILD_DIR}/${APPLICATION}.out -I ${INCLUDE_DIR}
@@ -35,3 +39,5 @@ announce:
 	@printf "|%*s%s%*s|\n" $$(expr 20 - $${#MESSAGE} / 2) "" "$(MESSAGE)" $$(expr 20 - $$(($${#MESSAGE} + 1)) / 2) ""
 	@echo "------------------------------------------"
 
+windows:
+	@git-bash.exe -c "make build run && /usr/bin/bash --login -i"
