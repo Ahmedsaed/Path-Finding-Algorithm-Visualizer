@@ -5,14 +5,46 @@
       "-c",
       "-Wall",
       "-ggdb3",
-      "-I",
-      "include",
+      "-Iinclude",
+      "-Isources",
       "-o",
       "./build/shortest_path.out",
       "./sources/main.cpp"
     ],
     "directory": "/home/ahmed/Documents/Projects/College/Path-Finding-Algorithm-Visualizer",
     "file": "/home/ahmed/Documents/Projects/College/Path-Finding-Algorithm-Visualizer/sources/main.cpp",
+    "output": "/home/ahmed/Documents/Projects/College/Path-Finding-Algorithm-Visualizer/build/shortest_path.out"
+  },
+  {
+    "arguments": [
+      "/usr/bin/g++",
+      "-c",
+      "-Wall",
+      "-ggdb3",
+      "-Iinclude",
+      "-Isources",
+      "-o",
+      "./build/shortest_path.out",
+      "./include/rome.h"
+    ],
+    "directory": "/home/ahmed/Documents/Projects/College/Path-Finding-Algorithm-Visualizer",
+    "file": "/home/ahmed/Documents/Projects/College/Path-Finding-Algorithm-Visualizer/include/rome.h",
+    "output": "/home/ahmed/Documents/Projects/College/Path-Finding-Algorithm-Visualizer/build/shortest_path.out"
+  },
+  {
+    "arguments": [
+      "/usr/bin/g++",
+      "-c",
+      "-Wall",
+      "-ggdb3",
+      "-Iinclude",
+      "-Isources",
+      "-o",
+      "./build/shortest_path.out",
+      "./include/stack.h"
+    ],
+    "directory": "/home/ahmed/Documents/Projects/College/Path-Finding-Algorithm-Visualizer",
+    "file": "/home/ahmed/Documents/Projects/College/Path-Finding-Algorithm-Visualizer/include/stack.h",
     "output": "/home/ahmed/Documents/Projects/College/Path-Finding-Algorithm-Visualizer/build/shortest_path.out"
   }
 ]

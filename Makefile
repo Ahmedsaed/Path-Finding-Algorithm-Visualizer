@@ -1,13 +1,13 @@
 APPLICATION := shortest_path
 BUILD_DIR := build
-SRC_DIR := .
+SRC_DIR := sources
 INCLUDE_DIR := include
 TEST_DIR := tests
 TMP_DIR := .tmp
 MAKEFLAGS += -s
 
 CC := g++
-CFlags := -Wall -ggdb3
+CFLAGS := -Wall -ggdb3
 
 SOURCE_FILES = $(wildcard ./sources/*.cpp)
 HEADER_FILES = $(wildcard ./include/*.h)
@@ -21,7 +21,7 @@ all: build run
 endif
 
 build: setup_dirs
-	@${CC} ${CFlags} ${SOURCE_FILES} -o ./${BUILD_DIR}/${APPLICATION}.out -I ${INCLUDE_DIR}
+	${CC} ${CFLAGS} ${SOURCE_FILES} ${HEADER_FILES} -o ./${BUILD_DIR}/${APPLICATION}.out -I${INCLUDE_DIR} -I${SRC_DIR}
 	@$(MAKE) announce MESSAGE="Compiled successfully"
 
 run:
