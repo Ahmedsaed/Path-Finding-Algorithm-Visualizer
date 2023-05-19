@@ -74,4 +74,13 @@ int main(void)
     }
     std::cout << "\n";
 
+	path = iterativeDeepeningDFS("Arad", "Bucharest");
+
+	std::cout << "Shortest path from " << "Arad" << " to " << "Bucharest" << ":\n";
+    for (const auto& city : path) {
+        std::cout << city << " -> ";
+    }
+    std::cout << "\n";
+
+	
 }
