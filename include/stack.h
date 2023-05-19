@@ -1,7 +1,7 @@
 #ifndef STACK_H
 #define STACK_H
 
-#include <iostream>
+#include "main.h"
 
 template <class t>
 class stack
