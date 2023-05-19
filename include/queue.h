@@ -1,24 +1,31 @@
 
-#define STACK_H
-#include <iostream>
+#ifndef QUEUE_H
+#define QUEUE_H
+
+#include "main.h"
 
 template <class t>
-class queue2
+class queue
 {
+public:
+	queue();
+	bool empty();
+	void push(t val);
+	void pop();
+	t front();
+	int size();
+
 private:
 	struct node
 	{
 		t data;
 		node* next;
 	};
-	node* front, * rear;
-	int len;
-public:
-	queue2();
-	bool empty();
-	void push();
-	void pop();
-	t first();
-	int size();
-	void print();
+
+	node* m_front, * m_rear;
+	int m_len;
 };
+
+#include "queue.tpp"
+
+#endif

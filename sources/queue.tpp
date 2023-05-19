@@ -1,78 +1,71 @@
+#ifndef QUEUE_TPP
+#define QUEUE_TPP
 
-#include <iostream>
-#include <queue.h>
-template<class t>
- inline queue2<t>::queue2()
+#include "queue.h"
+
+template <class t>
+queue<t>::queue()
 {
-	front = rear = NULL;
-	len = 0;
+	m_front = m_rear = NULL;
+	m_len = 0;
 }
 
- template<class t>
- inline bool queue2<t>::empty()
- {
-	 return front == NULL;
- }
+template <class t>
+bool queue<t>::empty()
+{
+	return m_front == NULL;
+}
 
- template<class t>
- inline void queue2<t>::push()
- {
-	 node* newNode = new node;
-	 newNode->data = val;
-	 newNode->next = NULL;
-	 if (empty())
-	 {
-		 front = rear = newNode;
-	 }
-	 else {
-		 rear->next = newNode;
-		 rear = newNode;
-		 rear->next = NULL;
-	 }
-	 len++;
- }
+template <class t>
+void queue<t>::push(t val)
+{
+	node *newNode = new node;
+	newNode->data = val;
+	newNode->next = NULL;
+	if (empty())
+	{
+		m_front = m_rear = newNode;
+	}
+	else
+	{
+		m_rear->next = newNode;
+		m_rear = newNode;
+		m_rear->next = NULL;
+	}
+	m_len++;
+}
 
- template<class t>
- inline void queue2<t>::pop()
- {
-	 if (empty())
-		 cout << "Sorry, The queue is Empty...\n";
-	 else {
-		 node* temp = front;
-		 front = front->next;
-		 temp = temp->next = NULL;
-		 delete temp;
-		 len--;
-	 }
- }
+template <class t>
+void queue<t>::pop()
+{
+	if (empty())
+		std::cout << "Sorry, The queue is Empty...\n";
+	else
+	{
+		node *temp = m_front;
+		m_front = m_front->next;
+		temp = temp->next = NULL;
+		delete temp;
+		m_len--;
+	}
+}
 
- template<class t>
- inline t queue2<t>::first()
- {
-	 if (empty())
-		 cout << "Sorry, The queue is Empty...\n";
-	 else
-		 return  front->data;
- }
+template <class t>
+t queue<t>::front()
+{
+	if (empty())
+	{
+		std::cout << "Sorry, The queue is Empty...\n";
+		return 0;
+	}
+	else
+		return m_front->data;
+}
 
- template<class t>
- inline int queue2<t>::size()
- {
-	 return len;
- }
+template <class t>
+int queue<t>::size()
+{
+	return m_len;
+}
 
- template<class t>
- inline void queue2<t>::print()
- {
-	 if (empty())
-		 cout << "Sorry, The queue is Empty...\n";
-	 else
-	 {
-		 node* cur = front;
-		 while (cur != NULL)
-		 {
-			 cout << cur->data << " ";
-			 cur = cur->next;
-		 }
-	 }
- }
+#endif
