@@ -4,16 +4,14 @@
 #include <iostream>
 
 template <class t>
-
-
 class vector{
 private:
-    int* m_data;
+    t* m_data;
     int m_size, m_capacity;
     void expand()
     {
-        int *new_data = new int[m_capacity * 2];
-        memcpy(new_data, m_data, m_size * sizeof(int));
+        t *new_data = new t[m_capacity * 2];
+        memcpy(new_data, m_data, m_size * sizeof(t));
         delete[] m_data;
         m_data = new_data;
         m_capacity *= 2;
@@ -21,8 +19,8 @@ private:
     
     void shrink()
     {
-        int *new_data = new int[m_capacity / 2];
-        memcpy(new_data, m_data, m_size * sizeof(int));
+        t *new_data = new t[m_capacity / 2];
+        memcpy(new_data, m_data, m_size * sizeof(t));
         delete[] m_data;
         m_data = new_data;
         m_capacity /= 2;
@@ -33,31 +31,14 @@ public:
     {
         m_size = 0;
         m_capacity = 4;
-        m_data = new int[4];
+        m_data = new t[4];
     }
 
-    void push_back(int x)
-    {
-        if(m_size == m_capacity)
-            expand();
-        m_data[m_size++] = x;
-    }
-    void pop_back()
-    {
-        m_size--;
-        if(m_size*2 < m_capacity && m_capacity>4)
-            shrink();
-    }
-    int size()
-    {
-        return m_size;
-    }
-    bool empty ()
-    {
-        if(m_size==0)
-            return true;
-        return false;
-    }
+    void push_back(t x);  
+    void pop_back();
+    int size();
+    bool empty ();
+    
 
     int& operator[](int index)
     {
