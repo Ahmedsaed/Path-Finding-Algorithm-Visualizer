@@ -14,6 +14,7 @@ public:
 	void pop();
 	t front();
 	int size();
+	t back();
 
 private:
 	struct node
