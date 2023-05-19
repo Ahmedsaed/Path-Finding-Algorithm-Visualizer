@@ -62,7 +62,7 @@ t queue<t>::front()
 		return m_front->data;
 }
 template<class t>
-t queue2<t>::back()
+t queue<t>::back()
 {
 	return m_rear->data;
 }

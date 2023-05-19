@@ -1,4 +1,5 @@
 #include "main.h"
+#include "rome.h"
 //#include "rome.h"
 // #include "stack.h"
 // #include "vector.h"
@@ -39,6 +40,7 @@ int main(void)
 	cout << "hallo world" << endl;
 	//cout << rome["Arad"][0].first << endl;
 
+
 	vector<std::string> path = uniformCostSearch("Arad", "Bucharest");
 
 	std::cout << "Shortest path from " << "Arad" << " to " << "Bucharest" << ":\n";
@@ -46,4 +48,30 @@ int main(void)
         std::cout << city << " -> ";
     }
     std::cout << "\n";
+
+
+	path = depthLimitedSearch("Arad", "Bucharest", 5);
+
+	std::cout << "Shortest path from " << "Arad" << " to " << "Bucharest" << ":\n";
+    for (const auto& city : path) {
+        std::cout << city << " -> ";
+    }
+    std::cout << "\n";
+
+	path = depthLimitedSearch("Arad", "Bucharest", 4);
+
+	std::cout << "Shortest path from " << "Arad" << " to " << "Bucharest" << ":\n";
+    for (const auto& city : path) {
+        std::cout << city << " -> ";
+    }
+    std::cout << "\n";
+
+	path = depthLimitedSearch("Arad", "Bucharest");
+
+	std::cout << "Shortest path from " << "Arad" << " to " << "Bucharest" << ":\n";
+    for (const auto& city : path) {
+        std::cout << city << " -> ";
+    }
+    std::cout << "\n";
+
 }
