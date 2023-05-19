@@ -17,7 +17,7 @@ UNIT_TEST_FILES = $(patsubst %.c, %, $(notdir $(wildcard $(TEST_DIR)/unit/*.c)))
 ifeq ($(OS), Windows_NT)
 all: windows
 else
-all: build run
+all: clear_screen build run
 endif
 
 build: setup_dirs
@@ -41,3 +41,6 @@ announce:
 
 windows:
 	@git-bash.exe -c "make build run && /usr/bin/bash --login -i"
+
+clear_screen:
+	@clear
