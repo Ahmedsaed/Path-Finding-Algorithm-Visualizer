@@ -61,7 +61,11 @@ t queue<t>::front()
 	else
 		return m_front->data;
 }
-
+template<class t>
+t queue2<t>::back()
+{
+	return m_rear->data;
+}
 template <class t>
 int queue<t>::size()
 {
