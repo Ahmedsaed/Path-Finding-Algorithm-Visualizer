@@ -25,6 +25,70 @@
       "-Isources",
       "-o",
       "./build/shortest_path.out",
+      "./sources/ucs.cpp"
+    ],
+    "directory": "/home/ahmed/Documents/Projects/College/Path-Finding-Algorithm-Visualizer",
+    "file": "/home/ahmed/Documents/Projects/College/Path-Finding-Algorithm-Visualizer/sources/ucs.cpp",
+    "output": "/home/ahmed/Documents/Projects/College/Path-Finding-Algorithm-Visualizer/build/shortest_path.out"
+  },
+  {
+    "arguments": [
+      "/usr/bin/g++",
+      "-c",
+      "-Wall",
+      "-ggdb3",
+      "-Iinclude",
+      "-Isources",
+      "-o",
+      "./build/shortest_path.out",
+      "./include/algorithm.h"
+    ],
+    "directory": "/home/ahmed/Documents/Projects/College/Path-Finding-Algorithm-Visualizer",
+    "file": "/home/ahmed/Documents/Projects/College/Path-Finding-Algorithm-Visualizer/include/algorithm.h",
+    "output": "/home/ahmed/Documents/Projects/College/Path-Finding-Algorithm-Visualizer/build/shortest_path.out"
+  },
+  {
+    "arguments": [
+      "/usr/bin/g++",
+      "-c",
+      "-Wall",
+      "-ggdb3",
+      "-Iinclude",
+      "-Isources",
+      "-o",
+      "./build/shortest_path.out",
+      "./include/main.h"
+    ],
+    "directory": "/home/ahmed/Documents/Projects/College/Path-Finding-Algorithm-Visualizer",
+    "file": "/home/ahmed/Documents/Projects/College/Path-Finding-Algorithm-Visualizer/include/main.h",
+    "output": "/home/ahmed/Documents/Projects/College/Path-Finding-Algorithm-Visualizer/build/shortest_path.out"
+  },
+  {
+    "arguments": [
+      "/usr/bin/g++",
+      "-c",
+      "-Wall",
+      "-ggdb3",
+      "-Iinclude",
+      "-Isources",
+      "-o",
+      "./build/shortest_path.out",
+      "./include/queue.h"
+    ],
+    "directory": "/home/ahmed/Documents/Projects/College/Path-Finding-Algorithm-Visualizer",
+    "file": "/home/ahmed/Documents/Projects/College/Path-Finding-Algorithm-Visualizer/include/queue.h",
+    "output": "/home/ahmed/Documents/Projects/College/Path-Finding-Algorithm-Visualizer/build/shortest_path.out"
+  },
+  {
+    "arguments": [
+      "/usr/bin/g++",
+      "-c",
+      "-Wall",
+      "-ggdb3",
+      "-Iinclude",
+      "-Isources",
+      "-o",
+      "./build/shortest_path.out",
       "./include/rome.h"
     ],
     "directory": "/home/ahmed/Documents/Projects/College/Path-Finding-Algorithm-Visualizer",
@@ -45,6 +109,22 @@
     ],
     "directory": "/home/ahmed/Documents/Projects/College/Path-Finding-Algorithm-Visualizer",
     "file": "/home/ahmed/Documents/Projects/College/Path-Finding-Algorithm-Visualizer/include/stack.h",
+    "output": "/home/ahmed/Documents/Projects/College/Path-Finding-Algorithm-Visualizer/build/shortest_path.out"
+  },
+  {
+    "arguments": [
+      "/usr/bin/g++",
+      "-c",
+      "-Wall",
+      "-ggdb3",
+      "-Iinclude",
+      "-Isources",
+      "-o",
+      "./build/shortest_path.out",
+      "./include/vector.h"
+    ],
+    "directory": "/home/ahmed/Documents/Projects/College/Path-Finding-Algorithm-Visualizer",
+    "file": "/home/ahmed/Documents/Projects/College/Path-Finding-Algorithm-Visualizer/include/vector.h",
     "output": "/home/ahmed/Documents/Projects/College/Path-Finding-Algorithm-Visualizer/build/shortest_path.out"
   }
 ]
