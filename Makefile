@@ -1,36 +1,55 @@
 APPLICATION := shortest_path
+
+# Directories 
 BUILD_DIR := build
 SRC_DIR := sources
-INCLUDE_DIR := include
+INC_DIR := include
+OBJ_DIR := objects
 TEST_DIR := tests
-TMP_DIR := .tmp
+
+# Make flags
 MAKEFLAGS += -s
 
+# Compiler flags
 CC := g++
 CFLAGS := -Wall -ggdb3
 
-SOURCE_FILES = $(wildcard ./sources/*.cpp)
-HEADER_FILES = $(wildcard ./include/*.h)
+# Files
+SOURCE_FILES := $(wildcard $(SRC_DIR)/*.cpp)
+HEADER_FILES := $(wildcard $(INC_DIR)/*.h)
+OBJECT_FILES := $(patsubst $(SRC_DIR)/%.cpp, $(OBJ_DIR)/%.o, $(SOURCE_FILES))
+DEP_FILES := $(OBJECT_FILES:.o=.d)
+EXECUTABLE := $(BUILD_DIR)/$(APPLICATION)
+
+# Tests
 INTEGRATION_TESTS_FILES = $(patsubst $(TEST_DIR)/integration/%.py,%,$(wildcard $(TEST_DIR)/integration/*.py))
 UNIT_TEST_FILES = $(patsubst %.c, %, $(notdir $(wildcard $(TEST_DIR)/unit/*.c)))
 
+# cross-platform compilation
 ifeq ($(OS), Windows_NT)
 all: windows
 else
 all: clear_screen build run
 endif
 
-build: setup_dirs
-	${CC} ${CFLAGS} ${SOURCE_FILES} ${HEADER_FILES} -o ./${BUILD_DIR}/${APPLICATION}.out -I${INCLUDE_DIR} -I${SRC_DIR}
+build: setup_dirs $(EXECUTABLE)
 	@$(MAKE) announce MESSAGE="Compiled successfully"
 
+$(EXECUTABLE): $(OBJECT_FILES)
+	$(CC) $(CFLAGS) -I${INC_DIR} -I${SRC_DIR} $^ -o $@
+
+$(OBJ_DIR)/%.o: $(SRC_DIR)/%.cpp
+	$(CC) $(CFLAGS) -I${INC_DIR} -I${SRC_DIR} -MMD -c $^ -o $@
+
+-include $(DEPS)
+
 run:
-	@./${BUILD_DIR}/${APPLICATION}.out
+	@./$(EXECUTABLE)
 
 setup_dirs:
+	@mkdir -p $(OBJ_DIR)
 	@mkdir -p ./$(BUILD_DIR)
 	@mkdir -p ./$(TEST_DIR)
-	@mkdir -p ./$(TMP_DIR)
 	@mkdir -p ./$(TEST_DIR/integration)
 	@mkdir -p ./$(TEST_DIR/unit)
 
@@ -44,3 +63,7 @@ windows:
 
 clear_screen:
 	@clear
+
+clean:
+	rm -rf $(OBJ_DIR)
+	rm -rf $(BUILD_DIR)
