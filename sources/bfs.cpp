@@ -24,7 +24,7 @@ std::vector<std::string> breadthFirstSearch(const std::string& source, const std
             return path;
         }
 
-        for (const auto& neighbor : rome[current]) {
+        for (const auto& neighbor : romania[current]) {
             if (visited.find(neighbor.first) == visited.end()) {
                 q.push(neighbor.first);
                 visited.insert(neighbor.first);

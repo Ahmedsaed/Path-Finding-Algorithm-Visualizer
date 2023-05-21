@@ -29,7 +29,7 @@ std::vector<std::string> depthLimitedSearch(const std::string& source, const std
         }
 
         if (depth < limit) {
-            for (const auto& neighbor : rome[current]) {
+            for (const auto& neighbor : romania[current]) {
                 if (visited.find(neighbor.first) == visited.end()) {
                     st.push({neighbor.first, depth + 1});
                     visited.insert(neighbor.first);

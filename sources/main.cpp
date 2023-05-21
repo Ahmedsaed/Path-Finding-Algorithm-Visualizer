@@ -1,6 +1,6 @@
 #include "main.h"
-#include "rome.h"
-//#include "rome.h"
+#include "romania.h"
+//#include "romania.h"
 // #include "stack.h"
 // #include "vector.h"
 // #include "queue.h"
@@ -38,7 +38,7 @@ int main(void)
 	// cout << stk.top() << endl;
 	
 	// cout << "hallo world" << endl;
-	//cout << rome["Arad"][0].first << endl;
+	//cout << romania["Arad"][0].first << endl;
 
 
 	vector<std::string> path;
@@ -68,13 +68,13 @@ int main(void)
     // }
     // std::cout << "\n";
 
-	path = depthFirstSearch("Arad", "Bucharest");
+	// path = depthFirstSearch("Arad", "Bucharest");
 
-	std::cout << "Shortest path from " << "Arad" << " to " << "Bucharest" << ":\n";
-    for (const auto& city : path) {
-        std::cout << city << " -> ";
-    }
-    std::cout << "\n";
+	// std::cout << "Shortest path from " << "Arad" << " to " << "Bucharest" << ":\n";
+    // for (const auto& city : path) {
+    //     std::cout << city << " -> ";
+    // }
+    // std::cout << "\n";
 
 	// path = iterativeDeepeningDFS("Arad", "Bucharest");
 
@@ -92,4 +92,11 @@ int main(void)
     // }
     // std::cout << "\n";
 	
+	// path = bidirectionalSearch("Arad", "Bucharest");
+
+	// std::cout << "Shortest path from " << "Arad" << " to " << "Bucharest" << ":\n";
+    // for (const auto& city : path) {
+    //     std::cout << city << " -> ";
+    // }
+    // std::cout << "\n";
 }

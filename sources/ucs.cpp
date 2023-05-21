@@ -9,7 +9,7 @@ std::vector<std::string> uniformCostSearch(const std::string& source, const std:
     std::priority_queue<std::pair<int, std::string>, std::vector<std::pair<int, std::string>>, std::greater<std::pair<int, std::string>>> pq;
 
     // Initialize cost and visited arrays
-    for (const auto& city : rome) {
+    for (const auto& city : romania) {
         cost[city.first] = std::numeric_limits<int>::max();
         visited[city.first] = false;
     }
@@ -29,7 +29,7 @@ std::vector<std::string> uniformCostSearch(const std::string& source, const std:
 
         visited[current] = true;
 
-        for (const auto& neighbor : rome[current]) {
+        for (const auto& neighbor : romania[current]) {
             std::string nextCity = neighbor.first;
             int edgeCost = neighbor.second;
 
