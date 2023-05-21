@@ -4,6 +4,8 @@
 
 using namespace std;
 
+void printPath(vector<string> path);
+
 int main(void)
 {
 	// cout << "Vector" << endl;
@@ -38,76 +40,69 @@ int main(void)
 
 	vector<std::string> path;
 	
-	// path = uniformCostSearch("Arad", "Bucharest");
+	cout << "Uniform Cost Search" << endl;
+	path = uniformCostSearch("Arad", "Bucharest");
 
-	// std::cout << "Shortest path from " << "Arad" << " to " << "Bucharest" << ":\n";
-    // for (const auto& city : path) {
-    //     std::cout << city << " -> ";
-    // }
-    // std::cout << "\n";
+	std::cout << "Path from " << "Arad" << " to " << "Bucharest" << ":\n";
+    printPath(path);
 
+	cout << "Depth Limited Search with limit 5" << endl;
+	path = depthLimitedSearch("Arad", "Bucharest", 5);
 
-	// path = depthLimitedSearch("Arad", "Bucharest", 5);
+	std::cout << "Path from " << "Arad" << " to " << "Bucharest" << ":\n";
+    printPath(path);
 
-	// std::cout << "Shortest path from " << "Arad" << " to " << "Bucharest" << ":\n";
-    // for (const auto& city : path) {
-    //     std::cout << city << " -> ";
-    // }
-    // std::cout << "\n";
+	cout << "Depth Limited Search with limit 4" << endl;
+	path = depthLimitedSearch("Arad", "Bucharest", 4);
 
-	// path = depthLimitedSearch("Arad", "Bucharest", 4);
+	std::cout << "Path from " << "Arad" << " to " << "Bucharest" << ":\n";
+    printPath(path);
 
-	// std::cout << "Shortest path from " << "Arad" << " to " << "Bucharest" << ":\n";
-    // for (const auto& city : path) {
-    //     std::cout << city << " -> ";
-    // }
-    // std::cout << "\n";
+	cout << "Depth First Search" << endl;
+	path = depthFirstSearch("Arad", "Bucharest");
 
-	// path = depthFirstSearch("Arad", "Bucharest");
+	std::cout << "Path from " << "Arad" << " to " << "Bucharest" << ":\n";
+    printPath(path);
 
-	// std::cout << "Shortest path from " << "Arad" << " to " << "Bucharest" << ":\n";
-    // for (const auto& city : path) {
-    //     std::cout << city << " -> ";
-    // }
-    // std::cout << "\n";
+	cout << "Iterative Deepening Depth First Search" << endl;
+	path = iterativeDeepeningDFS("Arad", "Bucharest");
 
-	// path = iterativeDeepeningDFS("Arad", "Bucharest");
+	std::cout << "Path from " << "Arad" << " to " << "Bucharest" << ":\n";
+    printPath(path);
 
-	// std::cout << "Shortest path from " << "Arad" << " to " << "Bucharest" << ":\n";
-    // for (const auto& city : path) {
-    //     std::cout << city << " -> ";
-    // }
-    // std::cout << "\n";
+	cout << "Breadth First Search" << endl;
+	path = breadthFirstSearch("Arad", "Bucharest");
 
-	// path = breadthFirstSearch("Arad", "Bucharest");
-
-	// std::cout << "Shortest path from " << "Arad" << " to " << "Bucharest" << ":\n";
-    // for (const auto& city : path) {
-    //     std::cout << city << " -> ";
-    // }
-    // std::cout << "\n";
+	std::cout << "Path from " << "Arad" << " to " << "Bucharest" << ":\n";
+    printPath(path);
 	
-	// path = bidirectionalSearch("Arad", "Bucharest");
+	cout << "Bidirectional Search" << endl;
+	path = bidirectionalSearch("Arad", "Bucharest");
 
-	// std::cout << "Shortest path from " << "Arad" << " to " << "Bucharest" << ":\n";
-    // for (const auto& city : path) {
-    //     std::cout << city << " -> ";
-    // }
-    // std::cout << "\n";
+	std::cout << "Path from " << "Arad" << " to " << "Bucharest" << ":\n";
+    printPath(path);
 
-	// path = greedyBFS("Arad", "Bucharest");
+	cout << "Greedy Best First Search" << endl;
+	path = greedyBFS("Arad", "Bucharest");
 
-	// std::cout << "Shortest path from " << "Arad" << " to " << "Bucharest" << ":\n";
-    // for (const auto& city : path) {
-    //     std::cout << city << " -> ";
-    // }
-    // std::cout << "\n";
+	std::cout << "Path from " << "Arad" << " to " << "Bucharest" << ":\n";
+    printPath(path);
 
+	cout << "A* Search" << endl;
 	path = AStarSearch("Arad", "Bucharest");
 
-	std::cout << "Shortest path from " << "Arad" << " to " << "Bucharest" << ":\n";
-    for (const auto& city : path) {
-        std::cout << city << " -> ";
-    }
-    std::cout << "\n";
+	std::cout << "Path from " << "Arad" << " to " << "Bucharest" << ":\n";
+    printPath(path);
+}
+
+void printPath(vector<string> path)
+{
+	for (unsigned int i = 0; i < path.size(); i++)
+	{
+		if (i == path.size() - 1)
+			cout << path[i];
+		else
+			cout << path[i] << " --> ";
+	}
+	cout << endl << endl;
 }
