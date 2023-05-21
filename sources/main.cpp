@@ -1,9 +1,5 @@
 #include "main.h"
 #include "romania.h"
-//#include "romania.h"
-// #include "stack.h"
-// #include "vector.h"
-// #include "queue.h"
 #include "algorithm.h"
 
 using namespace std;
@@ -39,7 +35,6 @@ int main(void)
 	
 	// cout << "hallo world" << endl;
 	//cout << romania["Arad"][0].first << endl;
-
 
 	vector<std::string> path;
 	
@@ -99,4 +94,12 @@ int main(void)
     //     std::cout << city << " -> ";
     // }
     // std::cout << "\n";
+
+	path = greedyBFS("Arad", "Bucharest");
+
+	std::cout << "Shortest path from " << "Arad" << " to " << "Bucharest" << ":\n";
+    for (const auto& city : path) {
+        std::cout << city << " -> ";
+    }
+    std::cout << "\n";
 }
