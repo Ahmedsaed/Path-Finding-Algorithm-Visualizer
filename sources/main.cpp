@@ -95,7 +95,15 @@ int main(void)
     // }
     // std::cout << "\n";
 
-	path = greedyBFS("Arad", "Bucharest");
+	// path = greedyBFS("Arad", "Bucharest");
+
+	// std::cout << "Shortest path from " << "Arad" << " to " << "Bucharest" << ":\n";
+    // for (const auto& city : path) {
+    //     std::cout << city << " -> ";
+    // }
+    // std::cout << "\n";
+
+	path = AStarSearch("Arad", "Bucharest");
 
 	std::cout << "Shortest path from " << "Arad" << " to " << "Bucharest" << ":\n";
     for (const auto& city : path) {
