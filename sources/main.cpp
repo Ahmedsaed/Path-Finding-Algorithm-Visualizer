@@ -68,13 +68,13 @@ int main(void)
     // }
     // std::cout << "\n";
 
-	// path = depthLimitedSearch("Arad", "Bucharest");
+	path = depthFirstSearch("Arad", "Bucharest");
 
-	// std::cout << "Shortest path from " << "Arad" << " to " << "Bucharest" << ":\n";
-    // for (const auto& city : path) {
-    //     std::cout << city << " -> ";
-    // }
-    // std::cout << "\n";
+	std::cout << "Shortest path from " << "Arad" << " to " << "Bucharest" << ":\n";
+    for (const auto& city : path) {
+        std::cout << city << " -> ";
+    }
+    std::cout << "\n";
 
 	// path = iterativeDeepeningDFS("Arad", "Bucharest");
 
