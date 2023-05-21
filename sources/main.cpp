@@ -37,50 +37,59 @@ int main(void)
 	// stk.pop();
 	// cout << stk.top() << endl;
 	
-	cout << "hallo world" << endl;
+	// cout << "hallo world" << endl;
 	//cout << rome["Arad"][0].first << endl;
 
 
-	vector<std::string> path = uniformCostSearch("Arad", "Bucharest");
+	vector<std::string> path;
+	
+	// path = uniformCostSearch("Arad", "Bucharest");
 
-	std::cout << "Shortest path from " << "Arad" << " to " << "Bucharest" << ":\n";
-    for (const auto& city : path) {
-        std::cout << city << " -> ";
-    }
-    std::cout << "\n";
+	// std::cout << "Shortest path from " << "Arad" << " to " << "Bucharest" << ":\n";
+    // for (const auto& city : path) {
+    //     std::cout << city << " -> ";
+    // }
+    // std::cout << "\n";
 
 
-	path = depthLimitedSearch("Arad", "Bucharest", 5);
+	// path = depthLimitedSearch("Arad", "Bucharest", 5);
 
-	std::cout << "Shortest path from " << "Arad" << " to " << "Bucharest" << ":\n";
-    for (const auto& city : path) {
-        std::cout << city << " -> ";
-    }
-    std::cout << "\n";
+	// std::cout << "Shortest path from " << "Arad" << " to " << "Bucharest" << ":\n";
+    // for (const auto& city : path) {
+    //     std::cout << city << " -> ";
+    // }
+    // std::cout << "\n";
 
-	path = depthLimitedSearch("Arad", "Bucharest", 4);
+	// path = depthLimitedSearch("Arad", "Bucharest", 4);
 
-	std::cout << "Shortest path from " << "Arad" << " to " << "Bucharest" << ":\n";
-    for (const auto& city : path) {
-        std::cout << city << " -> ";
-    }
-    std::cout << "\n";
+	// std::cout << "Shortest path from " << "Arad" << " to " << "Bucharest" << ":\n";
+    // for (const auto& city : path) {
+    //     std::cout << city << " -> ";
+    // }
+    // std::cout << "\n";
 
-	path = depthLimitedSearch("Arad", "Bucharest");
+	// path = depthLimitedSearch("Arad", "Bucharest");
 
-	std::cout << "Shortest path from " << "Arad" << " to " << "Bucharest" << ":\n";
-    for (const auto& city : path) {
-        std::cout << city << " -> ";
-    }
-    std::cout << "\n";
+	// std::cout << "Shortest path from " << "Arad" << " to " << "Bucharest" << ":\n";
+    // for (const auto& city : path) {
+    //     std::cout << city << " -> ";
+    // }
+    // std::cout << "\n";
 
-	path = iterativeDeepeningDFS("Arad", "Bucharest");
+	// path = iterativeDeepeningDFS("Arad", "Bucharest");
 
-	std::cout << "Shortest path from " << "Arad" << " to " << "Bucharest" << ":\n";
-    for (const auto& city : path) {
-        std::cout << city << " -> ";
-    }
-    std::cout << "\n";
+	// std::cout << "Shortest path from " << "Arad" << " to " << "Bucharest" << ":\n";
+    // for (const auto& city : path) {
+    //     std::cout << city << " -> ";
+    // }
+    // std::cout << "\n";
 
+	// path = breadthFirstSearch("Arad", "Bucharest");
+
+	// std::cout << "Shortest path from " << "Arad" << " to " << "Bucharest" << ":\n";
+    // for (const auto& city : path) {
+    //     std::cout << city << " -> ";
+    // }
+    // std::cout << "\n";
 	
 }
