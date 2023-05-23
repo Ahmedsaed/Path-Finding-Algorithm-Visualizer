@@ -41,13 +41,13 @@ T& vector<T>::operator[](int index) {
 template <class T>
 void vector<T>::expand()
 {
-    T *new_data = new T[m_capacity * 2];
+    m_capacity = (m_capacity == 0) ? 1 : m_capacity * 2;
+    T *new_data = new T[m_capacity];
     for (size_t i = 0; i < m_size; ++i) {
-        new (new_data + i) T(m_data[i]);  // Copy constructor or assignment operator
+        new_data[i] = m_data[i];
     }
     delete[] m_data;
     m_data = new_data;
-    m_capacity *= 2;
 }
 
 template <class T>
