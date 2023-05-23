@@ -11,7 +11,6 @@ vector<T>::vector()
     m_data = new T[4];
 }
 
-
 template<typename T>
 vector<T>::vector(const std::initializer_list<T>& initList) {
     for (const auto& element : initList) {
@@ -25,12 +24,12 @@ vector<T>::vector(const std::initializer_list<T>& initList) {
 template<typename T>
 vector<T>& vector<T>::operator=(const std::initializer_list<T>& initList) {
     clear();
-    for (const auto& element : initList) {
-        push_back(element);
-    }
     m_size = 0;
     m_capacity = 4;
     m_data = new T[4];
+    for (const auto& element : initList) {
+        push_back(element);
+    }
     return *this;
 }
 
