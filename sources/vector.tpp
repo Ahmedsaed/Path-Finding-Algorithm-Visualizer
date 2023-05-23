@@ -22,6 +22,11 @@ vector<T>::vector(const std::initializer_list<T>& initList) {
 }
 
 template<typename T>
+vector<T>::~vector() {
+    delete[] m_data;
+}
+
+template<typename T>
 vector<T>& vector<T>::operator=(const std::initializer_list<T>& initList) {
     clear();
     m_size = 0;

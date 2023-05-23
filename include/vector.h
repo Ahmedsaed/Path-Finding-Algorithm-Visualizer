@@ -19,6 +19,7 @@ namespace udtl {
         using size_type = std::size_t;
 
         vector();
+        ~vector();
         vector(const std::initializer_list<T>& initList);
         vector& operator=(const std::initializer_list<T>& initList);
 
