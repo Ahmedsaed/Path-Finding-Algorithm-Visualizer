@@ -24,14 +24,15 @@ vector<T>::vector(const std::initializer_list<T>& initList) {
 template<typename T>
 vector<T>::~vector() {
     delete[] m_data;
+    m_data = nullptr;
 }
 
 template<typename T>
 vector<T>& vector<T>::operator=(const std::initializer_list<T>& initList) {
     clear();
     m_size = 0;
-    m_capacity = 4;
-    m_data = new T[4];
+    m_capacity = initList.size();
+    m_data = new T[m_capacity];
     for (const auto& element : initList) {
         push_back(element);
     }
@@ -114,25 +115,20 @@ void vector<T>::clear() {
 
 template<typename T>
 void vector<T>::insert(size_type pos, const T& value) {
-    // Check if the vector is full and needs to be expanded
     if (m_size == m_capacity) {
         expand();
     }
 
-    // Validate the position
     if (pos > m_size) {
         throw std::out_of_range("Invalid position for insertion");
     }
 
-    // Shift elements to the right to make space for the new element
     for (size_type i = m_size; i > pos; --i) {
         m_data[i] = m_data[i - 1];
     }
 
-    // Insert the new element at the specified position
     m_data[pos] = value;
 
-    // Increment the size of the vector
     ++m_size;
 }
 
