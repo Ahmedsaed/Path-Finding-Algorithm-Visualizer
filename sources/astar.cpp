@@ -1,13 +1,13 @@
 #include "algorithm.h"
 
-std::vector<std::string> AStarSearch(const std::string& source, const std::string& destination) {
+udtl::vector<std::string> AStarSearch(const std::string& source, const std::string& destination) {
     std::map<std::string, bool> visited;
     std::map<std::string, std::string> parent;
     std::map<std::string, int> gScore; // Cost from start to current node
     std::map<std::string, int> fScore; // Cost from start to current node + heuristic value
 
     // Priority queue ordered by the fScore
-    std::priority_queue<std::pair<int, std::string>, std::vector<std::pair<int, std::string>>, std::greater<std::pair<int, std::string>>> pq;
+    std::priority_queue<std::pair<int, std::string>, udtl::vector<std::pair<int, std::string>>, std::greater<std::pair<int, std::string>>> pq;
 
     // Initialize scores for all cities to infinity except for the source city
     for (const auto& pair : romania) {
@@ -28,7 +28,7 @@ std::vector<std::string> AStarSearch(const std::string& source, const std::strin
 
         if (currentCity == destination) {
             // Destination city reached, construct the path and return
-            std::vector<std::string> path;
+            udtl::vector<std::string> path;
             while (currentCity != source) {
                 path.push_back(currentCity);
                 currentCity = parent[currentCity];

@@ -1,11 +1,11 @@
 #include "algorithm.h"
 
-std::vector<std::string> greedyBFS(const std::string& source, const std::string& destination) {
+udtl::vector<std::string> greedyBFS(const std::string& source, const std::string& destination) {
     std::map<std::string, bool> visited;
     std::map<std::string, std::string> parent;
 
     // Priority queue ordered by the heuristic value (greedy approach)
-    std::priority_queue<std::pair<int, std::string>, std::vector<std::pair<int, std::string>>, std::greater<std::pair<int, std::string>>> pq;
+    std::priority_queue<std::pair<int, std::string>, udtl::vector<std::pair<int, std::string>>, std::greater<std::pair<int, std::string>>> pq;
 
     // Enqueue the source city with its heuristic value as priority
     pq.push({H_table[source], source});
@@ -17,7 +17,7 @@ std::vector<std::string> greedyBFS(const std::string& source, const std::string&
 
         if (currentCity == destination) {
             // Destination city reached, construct the path and return
-            std::vector<std::string> path;
+            udtl::vector<std::string> path;
             while (currentCity != source) {
                 path.push_back(currentCity);
                 currentCity = parent[currentCity];

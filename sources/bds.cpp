@@ -1,6 +1,6 @@
 #include "algorithm.h"
 
-std::vector<std::string> bidirectionalSearch(const std::string& source, const std::string& destination) {
+udtl::vector<std::string> bidirectionalSearch(const std::string& source, const std::string& destination) {
     std::map<std::string, bool> visitedFromSource;
     std::map<std::string, bool> visitedFromDestination;
 
@@ -60,7 +60,7 @@ std::vector<std::string> bidirectionalSearch(const std::string& source, const st
     }
 
     // Construct the path from the source to the meeting node
-    std::vector<std::string> path;
+    udtl::vector<std::string> path;
     std::string node = meetingNode;
     while (node != source) {
         path.push_back(node);

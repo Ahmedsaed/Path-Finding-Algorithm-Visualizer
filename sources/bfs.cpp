@@ -1,6 +1,6 @@
 #include "algorithm.h"
 
-std::vector<std::string> breadthFirstSearch(const std::string& source, const std::string& destination) {
+udtl::vector<std::string> breadthFirstSearch(const std::string& source, const std::string& destination) {
     std::queue<std::string> q;
     std::set<std::string> visited;
     std::map<std::string, std::string> parent;
@@ -13,7 +13,7 @@ std::vector<std::string> breadthFirstSearch(const std::string& source, const std
         q.pop();
 
         if (current == destination) {
-            std::vector<std::string> path;
+            udtl::vector<std::string> path;
             std::string node = current;
             while (node != source) {
                 path.push_back(node);

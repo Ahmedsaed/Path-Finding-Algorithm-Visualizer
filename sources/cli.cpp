@@ -4,7 +4,7 @@
 
 using namespace std;
 
-void printPath(vector<string> path);
+void printPath(udtl::vector<string> path);
 
 int main(void)
 {
@@ -46,7 +46,7 @@ int main(void)
 	cout << "Choose an algorithm: ";
 	getline(cin, algorithm);
 
-	vector<std::string> path;
+	udtl::vector<std::string> path;
 	
 	if (algorithm == "Uniform Cost Search")
 		path = uniformCostSearch(start, end);
@@ -83,7 +83,7 @@ int main(void)
 	return 0;
 }
 
-void printPath(vector<string> path)
+void printPath(udtl::vector<string> path)
 {
 	for (unsigned int i = 0; i < path.size(); i++)
 	{

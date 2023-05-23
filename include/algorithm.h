@@ -3,23 +3,23 @@
 
 #include "main.h"
 
-#include <vector>
+#include "vector.h"
 #include <set>
 #include <map>
 #include <queue>
 #include <stack>
 #include <algorithm>
 
-extern std::map<std::string, std::vector<std::pair<std::string, int>>> romania;
+extern std::map<std::string, udtl::vector<std::pair<std::string, int>>> romania;
 extern std::map<std::string, int> H_table;
 
-std::vector<std::string> uniformCostSearch(const std::string& source, const std::string& destination);
-std::vector<std::string> depthLimitedSearch(const std::string& source, const std::string& destination, int limit = 0);
-std::vector<std::string> iterativeDeepeningDFS(const std::string& source, const std::string& destination);
-std::vector<std::string> breadthFirstSearch(const std::string& source, const std::string& destination);
-std::vector<std::string> depthFirstSearch(const std::string& source, const std::string& destination);
-std::vector<std::string> bidirectionalSearch(const std::string& source, const std::string& destination);
-std::vector<std::string> greedyBFS(const std::string& source, const std::string& destination);
-std::vector<std::string> AStarSearch(const std::string& source, const std::string& destination);
+udtl::vector<std::string> uniformCostSearch(const std::string& source, const std::string& destination);
+udtl::vector<std::string> depthLimitedSearch(const std::string& source, const std::string& destination, int limit = 0);
+udtl::vector<std::string> iterativeDeepeningDFS(const std::string& source, const std::string& destination);
+udtl::vector<std::string> breadthFirstSearch(const std::string& source, const std::string& destination);
+udtl::vector<std::string> depthFirstSearch(const std::string& source, const std::string& destination);
+udtl::vector<std::string> bidirectionalSearch(const std::string& source, const std::string& destination);
+udtl::vector<std::string> greedyBFS(const std::string& source, const std::string& destination);
+udtl::vector<std::string> AStarSearch(const std::string& source, const std::string& destination);
 
 #endif
