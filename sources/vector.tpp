@@ -14,8 +14,8 @@ vector<T>::vector()
 template<typename T>
 vector<T>::vector(const std::initializer_list<T>& initList) {
     m_size = 0;
-    m_capacity = 4;
-    m_data = new T[4];
+    m_capacity = initList.size();
+    m_data = new T[m_capacity];
     for (const auto& element : initList) {
         push_back(element);
     }
@@ -69,6 +69,7 @@ void vector<T>::push_back(T x)
         expand();
     m_data[m_size++] = x;
 }
+
 template <class T>
 void vector<T>::pop_back()
 {
