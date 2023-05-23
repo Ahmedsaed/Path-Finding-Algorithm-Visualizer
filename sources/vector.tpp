@@ -22,6 +22,15 @@ vector<T>::vector(const std::initializer_list<T>& initList) {
 }
 
 template<typename T>
+vector<T>::vector(const vector<T>& other) : m_data(new T[other.m_size]), m_size(other.m_size) {
+    // Copy the elements from the other vector
+    for (size_t i = 0; i < m_size; i++) {
+        m_data[i] = other.m_data[i];
+    }
+}
+
+
+template<typename T>
 vector<T>::~vector() {
     delete[] m_data;
     m_data = nullptr;
@@ -35,6 +44,19 @@ vector<T>& vector<T>::operator=(const std::initializer_list<T>& initList) {
     m_data = new T[m_capacity];
     for (const auto& element : initList) {
         push_back(element);
+    }
+    return *this;
+}
+
+template<typename T>
+vector<T>& vector<T>::operator=(const vector<T>& other) {
+    if (this != &other) {
+        // Create a temporary copy of the other vector
+        vector temp(other);
+
+        // Swap the contents of this vector with the temporary vector
+        std::swap(m_data, temp.m_data);
+        std::swap(m_size, temp.m_size);
     }
     return *this;
 }

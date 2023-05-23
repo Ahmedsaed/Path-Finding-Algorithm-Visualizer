@@ -20,7 +20,9 @@ namespace udtl {
 
         vector();
         ~vector();
+        vector(const vector<T>& other);
         vector(const std::initializer_list<T>& initList);
+        vector& operator=(const vector<T>& other);
         vector& operator=(const std::initializer_list<T>& initList);
 
         void push_back(T x);  
