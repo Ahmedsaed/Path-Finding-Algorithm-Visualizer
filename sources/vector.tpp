@@ -28,6 +28,9 @@ vector<T>& vector<T>::operator=(const std::initializer_list<T>& initList) {
     for (const auto& element : initList) {
         push_back(element);
     }
+    m_size = 0;
+    m_capacity = 4;
+    m_data = new T[4];
     return *this;
 }
 
