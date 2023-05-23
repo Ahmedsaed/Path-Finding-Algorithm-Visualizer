@@ -26,6 +26,6 @@ Path-Finding-Algorithm-Visualizer
 |   ├── unit                        # unit tests
 |   |   └── queue.cpp
 |   └── integration                 # integartion tests
-|       └── bfs.cpp                 
+|       └── bfs.py                 
 └── Makefile                        # Automation scripts to build, run and test the program
 ```
