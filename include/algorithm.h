@@ -8,6 +8,7 @@
 #include <map>
 #include "queue.h"
 #include "stack.h"
+#include "priority_queue.h"
 #include <algorithm>
 
 extern std::map<std::string, udtl::vector<std::pair<std::string, int>>> romania;

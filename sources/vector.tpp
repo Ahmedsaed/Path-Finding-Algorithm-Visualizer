@@ -4,7 +4,7 @@
 #include "vector.h"
 
 template <class T>
-vector<T>::vector()
+udtl::vector<T>::vector()
 {
     m_size = 0;
     m_capacity = 4;
@@ -12,7 +12,7 @@ vector<T>::vector()
 }
 
 template<typename T>
-vector<T>::vector(const std::initializer_list<T>& initList) {
+udtl::vector<T>::vector(const std::initializer_list<T>& initList) {
     m_size = 0;
     m_capacity = initList.size();
     m_data = new T[m_capacity];
@@ -22,7 +22,7 @@ vector<T>::vector(const std::initializer_list<T>& initList) {
 }
 
 template<typename T>
-vector<T>::vector(const vector<T>& other) : m_data(new T[other.m_size]), m_size(other.m_size) {
+udtl::vector<T>::vector(const vector<T>& other) : m_data(new T[other.m_size]), m_size(other.m_size) {
     // Copy the elements from the other vector
     for (size_t i = 0; i < m_size; i++) {
         m_data[i] = other.m_data[i];
@@ -31,13 +31,13 @@ vector<T>::vector(const vector<T>& other) : m_data(new T[other.m_size]), m_size(
 
 
 template<typename T>
-vector<T>::~vector() {
+udtl::vector<T>::~vector() {
     delete[] m_data;
     m_data = nullptr;
 }
 
 template<typename T>
-vector<T>& vector<T>::operator=(const std::initializer_list<T>& initList) {
+udtl::vector<T>& udtl::vector<T>::operator=(const std::initializer_list<T>& initList) {
     clear();
     m_size = 0;
     m_capacity = initList.size();
@@ -49,7 +49,7 @@ vector<T>& vector<T>::operator=(const std::initializer_list<T>& initList) {
 }
 
 template<typename T>
-vector<T>& vector<T>::operator=(const vector<T>& other) {
+udtl::vector<T>& udtl::vector<T>::operator=(const vector<T>& other) {
     if (this != &other) {
         // Create a temporary copy of the other vector
         vector temp(other);
@@ -62,12 +62,12 @@ vector<T>& vector<T>::operator=(const vector<T>& other) {
 }
 
 template<typename T>
-T& vector<T>::operator[](int index) {
+T& udtl::vector<T>::operator[](int index) {
     return m_data[index];
 }
 
 template <class T>
-void vector<T>::expand()
+void udtl::vector<T>::expand()
 {
     m_capacity = (m_capacity == 0) ? 1 : m_capacity * 2;
     T *new_data = new T[m_capacity];
@@ -79,7 +79,7 @@ void vector<T>::expand()
 }
 
 template <class T>
-void vector<T>::shrink()
+void udtl::vector<T>::shrink()
 {
     T *new_data = new T[m_capacity / 2];
     for (size_t i = 0; i < m_size; ++i) {
@@ -91,7 +91,7 @@ void vector<T>::shrink()
 }
 
 template <class T>
-void vector<T>::push_back(T x)
+void udtl::vector<T>::push_back(T x)
 {
     if (m_size == m_capacity)
         expand();
@@ -99,19 +99,19 @@ void vector<T>::push_back(T x)
 }
 
 template <class T>
-void vector<T>::pop_back()
+void udtl::vector<T>::pop_back()
 {
     m_size--;
     if (m_size * 2 < m_capacity && m_capacity > 4)
         shrink();
 }
 template <class T>
-unsigned int vector<T>::size() const
+unsigned int udtl::vector<T>::size() const
 {
     return m_size;
 }
 template <class T>
-bool vector<T>::empty() const
+bool udtl::vector<T>::empty() const
 {
     if (m_size == 0)
         return true;
@@ -120,23 +120,23 @@ bool vector<T>::empty() const
 
 // Non-const version of front()
 template<typename T>
-typename vector<T>::reference vector<T>::front() {
+typename udtl::vector<T>::reference udtl::vector<T>::front() {
     return *m_data;
 }
 
 // Const version of front()
 template<typename T>
-typename vector<T>::const_reference vector<T>::front() const {
+typename udtl::vector<T>::const_reference udtl::vector<T>::front() const {
     return *m_data;
 }
 
 template<typename T>
-void vector<T>::clear() {
+void udtl::vector<T>::clear() {
     m_size = 0;
 }
 
 template<typename T>
-void vector<T>::insert(size_type pos, const T& value) {
+void udtl::vector<T>::insert(size_type pos, const T& value) {
     if (m_size == m_capacity) {
         expand();
     }
@@ -155,12 +155,25 @@ void vector<T>::insert(size_type pos, const T& value) {
 }
 
 template <class T>
-void vector<T>::insert(T* pos, const T& value) {
+void udtl::vector<T>::insert(T* pos, const T& value) {
     // Calculate the index from the pointer position
     size_type index = pos - m_data;
 
     // Call the existing insert function with the index
     insert(index, value);
+}
+
+template <typename T>
+const typename udtl::vector<T>::value_type& udtl::vector<T>::back() const {
+    if (m_size == 0) {
+        throw std::runtime_error("Vector is empty");
+    }
+    return m_data[m_size - 1];
+}
+
+template <typename T>
+typename udtl::vector<T>::value_type& udtl::vector<T>::back() {
+    return const_cast<T&>(const_cast<const vector<T>*>(this)->back());
 }
 
 #endif

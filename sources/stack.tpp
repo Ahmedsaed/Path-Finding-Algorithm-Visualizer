@@ -4,13 +4,13 @@
 #include "stack.h"
 
 template <class t>
-stack<t>::stack() : m_top(nullptr) { }
+udtl::stack<t>::stack() : m_top(nullptr) { }
 
 template <class t>
-bool stack<t>::empty() { return m_top == NULL; }
+bool udtl::stack<t>::empty() { return m_top == NULL; }
 
 template <class t>
-void stack<t>::push(t val) {
+void udtl::stack<t>::push(t val) {
 	node* newNode = new node;
 	newNode->data = val;
 	newNode->next = m_top;
@@ -18,7 +18,7 @@ void stack<t>::push(t val) {
 }
 
 template <class t>
-void stack<t>::pop()
+void udtl::stack<t>::pop()
 {
 	if(!empty())
 	{
@@ -30,7 +30,7 @@ void stack<t>::pop()
 }
 
 template <class t>
-t& stack<t>::top()
+t& udtl::stack<t>::top()
 {
 	if (empty())
 		throw std::runtime_error("Sorry, the stack is empty...");

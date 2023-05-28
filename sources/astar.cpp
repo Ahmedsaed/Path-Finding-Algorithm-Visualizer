@@ -1,5 +1,4 @@
 #include "algorithm.h"
-#include <queue>
 
 udtl::vector<std::string> AStarSearch(const std::string& source, const std::string& destination) {
     std::map<std::string, bool> visited;
@@ -8,7 +7,7 @@ udtl::vector<std::string> AStarSearch(const std::string& source, const std::stri
     std::map<std::string, int> fScore; // Cost from start to current node + heuristic value
 
     // Priority queue ordered by the fScore
-    std::priority_queue<std::pair<int, std::string>, udtl::vector<std::pair<int, std::string>>, std::greater<std::pair<int, std::string>>> pq;
+    udtl::priority_queue<std::pair<int, std::string>, udtl::vector<std::pair<int, std::string>>, std::greater<std::pair<int, std::string>>> pq;
 
     // Initialize scores for all cities to infinity except for the source city
     for (const auto& pair : romania) {

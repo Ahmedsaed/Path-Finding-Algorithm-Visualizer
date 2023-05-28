@@ -4,20 +4,20 @@
 #include "queue.h"
 
 template <class t>
-queue<t>::queue()
+udtl::queue<t>::queue()
 {
 	m_front = m_rear = NULL;
 	m_len = 0;
 }
 
 template <class t>
-bool queue<t>::empty()
+bool udtl::queue<t>::empty()
 {
 	return m_front == NULL;
 }
 
 template <class t>
-void queue<t>::push(t val)
+void udtl::queue<t>::push(t val)
 {
 	node *newNode = new node;
 	newNode->data = val;
@@ -36,7 +36,7 @@ void queue<t>::push(t val)
 }
 
 template <class t>
-void queue<t>::pop()
+void udtl::queue<t>::pop()
 {
 	if (empty())
 		std::cout << "Sorry, The queue is Empty...\n";
@@ -51,7 +51,7 @@ void queue<t>::pop()
 }
 
 template <class t>
-t queue<t>::front()
+t udtl::queue<t>::front()
 {
 	if (empty())
 	{
@@ -62,12 +62,12 @@ t queue<t>::front()
 		return m_front->data;
 }
 template<class t>
-t queue<t>::back()
+t udtl::queue<t>::back()
 {
 	return m_rear->data;
 }
 template <class t>
-int queue<t>::size()
+int udtl::queue<t>::size()
 {
 	return m_len;
 }

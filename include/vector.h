@@ -25,16 +25,18 @@ namespace udtl {
         vector& operator=(const vector<T>& other);
         vector& operator=(const std::initializer_list<T>& initList);
 
-        void push_back(T x);  
+        void push_back(T x);
         void pop_back();
         unsigned int size() const;
         bool empty() const;
         void insert(size_type pos, const T& value);
         void insert(T* pos, const T& value);
-        
+
         reference front();  // Non-const version
         const_reference front() const;  // Const version
-        
+        reference back();
+        const_reference back() const;
+
         T& operator[](int index);
 
 
