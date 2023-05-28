@@ -5,21 +5,9 @@
 
 template <class t>
 class pair{
-private:
-    
-    
-
 public:
-    pair();
-    t* first;
-    t* second;
-    
-    
-
-    
+    t first;
+    t second;
 };
-
-
-#include "pair.tpp"
 
 #endif

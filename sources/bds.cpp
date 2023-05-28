@@ -7,8 +7,8 @@ udtl::vector<std::string> bidirectionalSearch(const std::string& source, const s
     std::map<std::string, std::string> parentFromSource;
     std::map<std::string, std::string> parentFromDestination;
 
-    std::queue<std::string> qSource;
-    std::queue<std::string> qDestination;
+    udtl::queue<std::string> qSource;
+    udtl::queue<std::string> qDestination;
 
     qSource.push(source);
     visitedFromSource[source] = true;

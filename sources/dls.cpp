@@ -1,7 +1,7 @@
 #include "algorithm.h"
 
 udtl::vector<std::string> depthLimitedSearch(const std::string& source, const std::string& destination, int limit) {
-    std::stack<std::pair<std::string, int>> st;
+    udtl::stack<std::pair<std::string, int>> st;
     std::set<std::string> visited;
     std::map<std::string, std::string> parent;
 

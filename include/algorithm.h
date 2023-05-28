@@ -6,8 +6,8 @@
 #include "vector.h"
 #include <set>
 #include <map>
-#include <queue>
-#include <stack>
+#include "queue.h"
+#include "stack.h"
 #include <algorithm>
 
 extern std::map<std::string, udtl::vector<std::pair<std::string, int>>> romania;

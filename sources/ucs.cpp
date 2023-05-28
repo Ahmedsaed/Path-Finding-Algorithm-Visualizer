@@ -1,4 +1,5 @@
 #include "algorithm.h"
+#include <queue>
 
 using namespace std;
 

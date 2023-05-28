@@ -1,4 +1,5 @@
 #include "algorithm.h"
+#include <queue>
 
 udtl::vector<std::string> greedyBFS(const std::string& source, const std::string& destination) {
     std::map<std::string, bool> visited;

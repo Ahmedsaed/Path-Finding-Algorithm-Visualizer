@@ -20,9 +20,7 @@ void stack<t>::push(t val) {
 template <class t>
 void stack<t>::pop()
 {
-	if(empty())
-		std::cout << "Sorry,The stack is Empty...\n";
-	else
+	if(!empty())
 	{
 		node* temp = m_top;
 		m_top = m_top->next;
@@ -32,34 +30,12 @@ void stack<t>::pop()
 }
 
 template <class t>
-t stack<t>::top()
+t& stack<t>::top()
 {
 	if (empty())
-	{
-		std::cout << "Sorry,The stack is Empty...\n";
-		return 0;
-	}
+		throw std::runtime_error("Sorry, the stack is empty...");
 	else
 		return m_top->data;
-	
-}
-
-template <class t>
-void stack<t>::print() {
-	if (empty())
-	{
-		std::cout << "Sorry,The stack is Empty...\n";
-	}
-	else {
-		node* cur = m_top;
-		std::cout << "[ ";
-		while (cur != NULL)
-		{
-			std::cout << cur->data << " ";
-			cur = cur->next;
-		}
-		std::cout << "]\n";
-	}
 }
 
 #endif
