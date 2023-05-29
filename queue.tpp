@@ -38,8 +38,8 @@ void udtl::queue<t>::push(t val)
 template <class t>
 void udtl::queue<t>::pop()
 {
-	if (empty())
-		std::cout << "Sorry, The queue is Empty...\n";
+    if (empty())
+        throw std::underflow_error("Sorry, The queue is Empty...\n");
 	else
 	{
 		node *temp = m_front;
@@ -54,10 +54,7 @@ template <class t>
 t udtl::queue<t>::front()
 {
 	if (empty())
-	{
-		std::cout << "Sorry, The queue is Empty...\n";
-		return 0;
-	}
+        throw std::underflow_error("Sorry, The queue is Empty...\n");
 	else
 		return m_front->data;
 }

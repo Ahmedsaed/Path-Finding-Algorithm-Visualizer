@@ -4,9 +4,10 @@
 #include <map>
 #include <string>
 #include <utility>
-#include "vector.h"
+#include <vector>
+#include <QStringList>
 
-std::map<std::string, udtl::vector<std::pair<std::string, int>>> romania = {
+std::map<std::string, std::vector<std::pair<std::string, int>>> romania = {
 	{"Arad", {{"Sibiu",140}, {"Zerind",75}, {"Timisoara",118}}}, 
 	{"Zerind", {{"Arad",75}, {"Oradea",71}}},
 	{"Oradea", {{"Zerind",71}, {"Sibiu",151}}},
@@ -50,6 +51,29 @@ std::map<std::string, int> H_table = {
     {"Vaslui", 199},
     {"Iasi", 226},
     {"Neamt", 234}
+};
+
+QStringList cities = {
+    "Arad",
+    "Zerind",
+    "Oradea",
+    "Sibiu",
+    "Timisoara",
+    "Lugoj",
+    "Mehadia",
+    "Drobeta",
+    "Craiova",
+    "Rimnicu Vilcea",
+    "Fagaras",
+    "Pitesti",
+    "Bucharest",
+    "Giurgiu",
+    "Urziceni",
+    "Hirsova",
+    "Eforie",
+    "Vaslui",
+    "Iasi",
+    "Neamt",
 };
 
 #endif

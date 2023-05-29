@@ -33,7 +33,7 @@ template <class t>
 t& udtl::stack<t>::top()
 {
 	if (empty())
-		throw std::runtime_error("Sorry, the stack is empty...");
+        throw std::underflow_error("Sorry, the stack is empty...");
 	else
 		return m_top->data;
 }

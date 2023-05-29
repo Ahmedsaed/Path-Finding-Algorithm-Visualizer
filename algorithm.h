@@ -10,8 +10,9 @@
 #include "stack.h"
 #include "priority_queue.h"
 #include <algorithm>
+#include <QStringList>
 
-extern std::map<std::string, udtl::vector<std::pair<std::string, int>>> romania;
+extern std::map<std::string, std::vector<std::pair<std::string, int>>> romania;
 extern std::map<std::string, int> H_table;
 
 udtl::vector<std::string> uniformCostSearch(const std::string& source, const std::string& destination);

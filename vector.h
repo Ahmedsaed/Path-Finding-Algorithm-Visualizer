@@ -5,7 +5,7 @@
 
 namespace udtl {
     template <class T>
-    class vector{
+    class vector {
     private:
         T* m_data;
         size_t m_size, m_capacity;
@@ -39,7 +39,6 @@ namespace udtl {
 
         T& operator[](int index);
 
-
         T* begin() {
             return m_data;
         }
@@ -55,5 +54,6 @@ namespace udtl {
 
     #include "vector.tpp"
 }
+
 
 #endif

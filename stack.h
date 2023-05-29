@@ -12,8 +12,7 @@ namespace udtl {
 		bool empty();
 		void push(t val);
 		void pop();
-		t& top();
-		void print();
+        t& top();
 
 	private:
 		struct node {

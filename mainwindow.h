@@ -3,6 +3,11 @@
 
 #include <QMainWindow>
 #include <QGraphicsView>
+#include <map>
+#include <vector>
+#include <string>
+#include "graphnode.h"
+#include "algorithm.h"
 
 class MainWindow : public QMainWindow
 {
@@ -14,5 +19,26 @@ public:
 private:
     QGraphicsView *mapView;
     QGraphicsScene *mapScene;
+
+    std::map<std::string, GraphNode*> graphNodes;
+
+    void generateGraph();
+    void addGraphNode(const std::string& nodeName, int x, int y);
+    void addGraphEdge(const std::string& nodeA, const std::string& nodeB);
+    void highlight_path(udtl::vector<std::string>& path);
+
+    QString source = "Arad";
+    QString destination = "Arad";
+    QString algo = "Breadth First Search";
+    int algo_limit = 0;
+    std::vector<GraphEdge*> highlightedEdges;
+
+private slots:
+    void handleSourceComboBox(int index);
+    void handleDestinationComboBox(int index);
+    void handleAlgorithmComboBox(int index);
+    void handleDepthLimitSpinBox(int value);
+    void handleStartButtonClicked();
+
 };
 #endif // MAINWINDOW_H

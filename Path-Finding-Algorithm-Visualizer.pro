@@ -15,6 +15,7 @@ SOURCES += \
     dfs.cpp \
     dls.cpp \
     gbfs.cpp \
+    graphnode.cpp \
     ids.cpp \
     main.cpp \
     mainwindow.cpp \
@@ -22,6 +23,7 @@ SOURCES += \
 
 HEADERS += \
     algorithm.h \
+    graphnode.h \
     main.h \
     mainwindow.h \
     pair.h \

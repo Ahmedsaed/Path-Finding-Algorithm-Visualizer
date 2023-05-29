@@ -8,10 +8,10 @@ udtl::vector<T>::vector()
 {
     m_size = 0;
     m_capacity = 4;
-    m_data = new T[4];
+    m_data = new T[m_capacity];
 }
 
-template<typename T>
+template <typename T>
 udtl::vector<T>::vector(const std::initializer_list<T>& initList) {
     m_size = 0;
     m_capacity = initList.size();
@@ -28,7 +28,6 @@ udtl::vector<T>::vector(const vector<T>& other) : m_data(new T[other.m_size]), m
         m_data[i] = other.m_data[i];
     }
 }
-
 
 template<typename T>
 udtl::vector<T>::~vector() {
@@ -173,7 +172,10 @@ const typename udtl::vector<T>::value_type& udtl::vector<T>::back() const {
 
 template <typename T>
 typename udtl::vector<T>::value_type& udtl::vector<T>::back() {
-    return const_cast<T&>(const_cast<const vector<T>*>(this)->back());
+    if (m_size == 0) {
+        throw std::runtime_error("Vector is empty");
+    }
+    return m_data[m_size - 1];
 }
 
 #endif

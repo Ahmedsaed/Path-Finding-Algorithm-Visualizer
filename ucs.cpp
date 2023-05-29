@@ -7,7 +7,7 @@ udtl::vector<std::string> uniformCostSearch(const std::string& source, const std
     std::map<std::string, bool> visited;
     std::map<std::string, int> cost;
     std::map<std::string, std::string> parent;
-    std::priority_queue<std::pair<int, std::string>, udtl::vector<std::pair<int, std::string>>, std::greater<std::pair<int, std::string>>> pq;
+    udtl::priority_queue<std::pair<int, std::string>, udtl::vector<std::pair<int, std::string>>, std::greater<std::pair<int, std::string>>> pq;
 
     // Initialize cost and visited arrays
     for (const auto& city : romania) {
