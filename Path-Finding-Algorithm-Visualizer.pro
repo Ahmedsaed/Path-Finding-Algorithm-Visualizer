@@ -40,5 +40,8 @@ qnx: target.path = /tmp/$${TARGET}/bin
 else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
 
-DISTFILES += \
-    Path-Finding-Algorithm-Visualizer.pro.user
+DISTFILES +=
+
+RESOURCES += \
+    assets.qrc \
+    assets.qrc
