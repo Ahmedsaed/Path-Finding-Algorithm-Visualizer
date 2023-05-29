@@ -1,5 +1,21 @@
 #include "algorithm.h"
 
+/**
+ * @brief Finds the shortest path between two nodes in a graph using bidirectional breadth-first search
+ * 
+ * @param source The starting node
+ * @param destination The destination node
+ * @param romania The graph represented as an adjacency list
+ * @return The shortest path from source to destination as a vector of node names, or an empty vector if no path is found
+ * 
+ * This function implements the bidirectional breadth-first search algorithm to find the shortest path between two nodes in a graph represented as an adjacency list. It takes the starting node, destination node, and the graph as input parameters and returns the shortest path as a vector of node names. If no path is found, it returns an empty vector.
+ * 
+ * The algorithm works by simultaneously exploring the graph from both the source and destination nodes until they meet at a common node. It maintains two sets of visited nodes, one from the source and the other from the destination, and two sets of parent nodes, one for each direction. It also maintains two queues, one for each direction, to keep track of the nodes to be explored.
+ * 
+ * The algorithm starts by adding the source and destination nodes to their respective queues and visited sets. It then explores the nodes in both directions by dequeuing the front nodes from the queues and expanding their neighbors. If a node is visited from the opposite direction, it means that the two paths have met at that node, and the algorithm terminates. Otherwise, it continues to explore the graph until it finds a meeting node.
+ * 
+ * Once a meeting node is found, the algorithm constructs the shortest path from the source to the meeting node by backtracking from the meeting node to the source using the parent nodes. It then extends the path from the meeting node to the destination using the parent nodes in the opposite direction. The final path is returned as a vector of node names.
+*/
 udtl::vector<std::string> bidirectionalSearch(const std::string& source, const std::string& destination) {
     std::map<std::string, bool> visitedFromSource;
     std::map<std::string, bool> visitedFromDestination;
