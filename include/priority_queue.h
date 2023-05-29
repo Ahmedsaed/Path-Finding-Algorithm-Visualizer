@@ -5,7 +5,7 @@
 #include <functional>
 
 namespace udtl {
-    template <typename T, typename T2, typename Compare = std::less<T>>
+    template <typename T, typename T2 = std::vector<int>, typename Compare = std::less<T>>
     class priority_queue {
     public:
         // Constructor
