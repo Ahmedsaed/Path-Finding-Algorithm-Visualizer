@@ -3,11 +3,11 @@
 
 #include "main.h"
 
-template <class t>
+template <typename t1, typename t2>
 class pair{
 public:
-    t first;
-    t second;
+    t1 first;
+    t2 second;
 };
 
 #endif
