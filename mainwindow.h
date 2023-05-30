@@ -27,9 +27,9 @@ private:
     void addGraphEdge(const std::string& nodeA, const std::string& nodeB);
     void highlight_path(udtl::vector<std::string>& path);
 
-    QString source = "Arad";
-    QString destination = "Arad";
-    QString algo = "Breadth First Search";
+    QString source = "";
+    QString destination = "";
+    QString algo = "";
     int algo_limit = 0;
     std::vector<GraphEdge*> highlightedEdges;
 

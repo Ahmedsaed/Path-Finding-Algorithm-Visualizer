@@ -10,6 +10,7 @@
 #include <string>
 #include <QTimer>
 #include <QEventLoop>
+#include <QLabel>
 
 extern QStringList algorithms_list;
 extern QStringList cities;
@@ -18,22 +19,29 @@ MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
 {
     // Create the sidebar widgets
+    QLabel *title = new QLabel("Options", this);
     QComboBox *sourceComboBox = new QComboBox(this);
     QComboBox *destinationComboBox = new QComboBox(this);
     QComboBox *algorithmComboBox = new QComboBox(this);
     QSpinBox *depthLimitSpinBox = new QSpinBox(this);
     QPushButton *startButton = new QPushButton("Start", this);
 
+    title->setStyleSheet("font-size: 18px; font-weight: bold; color: white;");
     sourceComboBox->addItems(cities);
     sourceComboBox->setPlaceholderText("Source City");
+    sourceComboBox->setCurrentIndex(-1);
     destinationComboBox->addItems(cities);
     destinationComboBox->setPlaceholderText("Destination City");
+    destinationComboBox->setCurrentIndex(-1);
     algorithmComboBox->addItems(algorithms_list);
     algorithmComboBox->setPlaceholderText("Algorithm");
+    algorithmComboBox->setCurrentIndex(-1);
     depthLimitSpinBox->setValue(1);
 
     // Create the sidebar layout
     QVBoxLayout *sidebarLayout = new QVBoxLayout;
+    sidebarLayout->setAlignment(Qt::AlignTop);
+    sidebarLayout->addWidget(title);
     sidebarLayout->addWidget(sourceComboBox);
     sidebarLayout->addWidget(destinationComboBox);
     sidebarLayout->addWidget(algorithmComboBox);
@@ -69,7 +77,7 @@ MainWindow::MainWindow(QWidget *parent)
     // Set the central widget of the main window
     setCentralWidget(mainWidget);
     setWindowTitle("Path Finding Algorithm Visualizer");
-    setFixedSize(1020, 410);
+    setFixedSize(1020, 420);
 
     // Connect input handlers
     connect(sourceComboBox, QOverload<int>::of(&QComboBox::currentIndexChanged), this, &MainWindow::handleSourceComboBox);
