@@ -66,6 +66,11 @@ T& udtl::vector<T>::operator[](int index) {
     return m_data[index];
 }
 
+template<typename T>
+T& udtl::vector<T>::operator[](int index) const {
+    return m_data[index];
+}
+
 template <class T>
 void udtl::vector<T>::expand()
 {

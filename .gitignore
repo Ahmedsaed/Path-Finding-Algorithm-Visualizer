@@ -8,3 +8,4 @@ objects
 !.vscode/launch.json
 !.vscode/extensions.json
 *.pro.user
+images

@@ -38,7 +38,7 @@ namespace udtl {
         const_reference back() const;
 
         T& operator[](int index);
-
+        T& operator[](int index) const;
 
         T* begin() {
             return m_data;

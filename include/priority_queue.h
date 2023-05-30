@@ -5,73 +5,81 @@
 #include <functional>
 
 namespace udtl {
-    template <typename T, typename T2 = std::vector<int>, typename Compare = std::less<T>>
+    template<typename T, typename Container = udtl::vector<T>, typename Compare = std::less<typename Container::value_type>>
     class priority_queue {
-    public:
-        // Constructor
-        priority_queue() {}
-
-        // Push element into the priority queue
-        void push(const T& value) {
-            container.push_back(value);
-            siftUp(container.size() - 1);
-        }
-
-        // Check if the priority queue is empty
-        bool empty() const {
-            return container.empty();
-        }
-
-        // Access the top element of the priority queue
-        const T& top() const {
-            return container.front();
-        }
-
-        // Remove the top element from the priority queue
-        void pop() {
-            if (empty())
-                return;
-
-            container[0] = container.back();
-            container.pop_back();
-            siftDown(0);
-        }
-
     private:
-        udtl::vector<T> container; // Underlying container
-        Compare compare;          // Comparison function object
+        Container heap;
+        Compare compare;
 
-        // Sift up the element at index i
-        void siftUp(int i) {
-            while (i > 0) {
-                int parent = (i - 1) / 2;
-                if (compare(container[i], container[parent]))
+        void heapifyUp(int index) {
+            while (index > 0) {
+                int parentIndex = (index - 1) / 2;
+                if (!compare(heap[index], heap[parentIndex])) {
                     break;
-                std::swap(container[i], container[parent]);
-                i = parent;
+                }
+                std::swap(heap[index], heap[parentIndex]);
+                index = parentIndex;
             }
         }
 
-        // Sift down the element at index i
-        void siftDown(int i) {
-            int size = container.size();
-            while (i < size) {
-                int left = 2 * i + 1;
-                int right = 2 * i + 2;
-                int largest = i;
+        void heapifyDown(int index) {
+            int size = heap.size();
+            while (true) {
+                int leftChildIndex = 2 * index + 1;
+                int rightChildIndex = 2 * index + 2;
+                int smallestIndex = index;
 
-                if (left < size && compare(container[left], container[largest]))
-                    largest = left;
+                if (leftChildIndex < size && compare(heap[leftChildIndex], heap[smallestIndex])) {
+                    smallestIndex = leftChildIndex;
+                }
 
-                if (right < size && compare(container[right], container[largest]))
-                    largest = right;
+                if (rightChildIndex < size && compare(heap[rightChildIndex], heap[smallestIndex])) {
+                    smallestIndex = rightChildIndex;
+                }
 
-                if (largest == i)
+                if (smallestIndex == index) {
                     break;
+                }
 
-                std::swap(container[i], container[largest]);
-                i = largest;
+                std::swap(heap[index], heap[smallestIndex]);
+                index = smallestIndex;
             }
+        }
+
+    public:
+        bool empty() const {
+            return heap.empty();
+        }
+
+        void push(const T& value) {
+            heap.push_back(value);
+            heapifyUp(heap.size() - 1);
+        }
+
+        void pop() {
+            if (empty()) {
+                return;
+            }
+
+            std::swap(heap[0], heap[heap.size() - 1]);
+            heap.pop_back();
+            heapifyDown(0);
+        }
+
+        const T& top() const {
+            if (empty()) {
+                throw std::out_of_range("Priority queue is empty.");
+            }
+
+            return heap[0];
+        }
+    };
+
+    // Custom comparator for sorting in descending order
+    template<typename T>
+    struct DescendingComparator {
+        bool operator()(const T& a, const T& b) const {
+            return a > b;
         }
     };
 }
