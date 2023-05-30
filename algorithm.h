@@ -11,6 +11,7 @@
 #include "priority_queue.h"
 #include <algorithm>
 #include <QStringList>
+#include <queue>
 
 extern std::map<std::string, std::vector<std::pair<std::string, int>>> romania;
 extern std::map<std::string, int> H_table;

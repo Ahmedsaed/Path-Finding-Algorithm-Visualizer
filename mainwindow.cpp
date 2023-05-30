@@ -25,8 +25,12 @@ MainWindow::MainWindow(QWidget *parent)
     QPushButton *startButton = new QPushButton("Start", this);
 
     sourceComboBox->addItems(cities);
+    sourceComboBox->setPlaceholderText("Source City");
     destinationComboBox->addItems(cities);
+    destinationComboBox->setPlaceholderText("Destination City");
     algorithmComboBox->addItems(algorithms_list);
+    algorithmComboBox->setPlaceholderText("Algorithm");
+    depthLimitSpinBox->setValue(1);
 
     // Create the sidebar layout
     QVBoxLayout *sidebarLayout = new QVBoxLayout;

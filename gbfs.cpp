@@ -6,7 +6,7 @@ udtl::vector<std::string> greedyBFS(const std::string& source, const std::string
     std::map<std::string, std::string> parent;
 
     // Priority queue ordered by the heuristic value (greedy approach)
-    udtl::priority_queue<std::pair<int, std::string>, udtl::vector<std::pair<int, std::string>>, std::greater<std::pair<int, std::string>>> pq;
+    std::priority_queue<std::pair<int, std::string>, udtl::vector<std::pair<int, std::string>>, std::greater<std::pair<int, std::string>>> pq;
 
     // Enqueue the source city with its heuristic value as priority
     pq.push({H_table[source], source});

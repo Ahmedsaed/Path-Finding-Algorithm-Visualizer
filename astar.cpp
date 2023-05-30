@@ -7,7 +7,7 @@ udtl::vector<std::string> AStarSearch(const std::string& source, const std::stri
     std::map<std::string, int> fScore; // Cost from start to current node + heuristic value
 
     // Priority queue ordered by the fScore
-    udtl::priority_queue<std::pair<int, std::string>, udtl::vector<std::pair<int, std::string>>, std::greater<std::pair<int, std::string>>> pq;
+    std::priority_queue<std::pair<int, std::string>, udtl::vector<std::pair<int, std::string>>, std::greater<std::pair<int, std::string>>> pq;
 
     // Initialize scores for all cities to infinity except for the source city
     for (const auto& pair : romania) {
