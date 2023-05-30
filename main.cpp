@@ -8,7 +8,7 @@
 QStringList algorithms_list = {
     "Breadth First Search",
     "Uniform Cost Search",
-    "depth First Search",
+    "Depth First Search",
     "Depth Limited Search",
     "Iterative Deepening DFS",
     "Bidirectional Search",

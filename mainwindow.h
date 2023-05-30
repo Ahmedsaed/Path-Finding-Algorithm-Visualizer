@@ -30,7 +30,7 @@ private:
     QString source = "";
     QString destination = "";
     QString algo = "";
-    int algo_limit = 0;
+    int algo_limit = 1;
     std::vector<GraphEdge*> highlightedEdges;
 
 private slots:

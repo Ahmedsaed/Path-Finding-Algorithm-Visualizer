@@ -172,7 +172,7 @@ void MainWindow::handleStartButtonClicked()
     udtl::vector<std::string> path;
     if (algo == "Breadth First Search")
         path = breadthFirstSearch(source.toStdString(), destination.toStdString());
-    else if (algo == "depth First Search")
+    else if (algo == "Depth First Search")
         path = depthFirstSearch(source.toStdString(), destination.toStdString());
     else if (algo == "Uniform Cost Search")
         path = uniformCostSearch(source.toStdString(), destination.toStdString());
