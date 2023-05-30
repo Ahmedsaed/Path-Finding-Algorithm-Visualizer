@@ -4,6 +4,32 @@
 #include "main.h"
 
 namespace udtl {
+    /**
+     * @file vector.tpp
+     * @brief Implementation of a dynamic array data structure.
+     *
+     * This file contains the implementation of a vector class template in C++.
+     * The vector class is a dynamic array data structure that can grow or shrink
+     * in size as elements are added or removed.
+     *
+     * The implementation includes the following member functions:
+     *   - A default constructor that initializes an empty vector with a capacity of 4.
+     *   - A constructor that takes an initializer list of elements to initialize the vector.
+     *   - A copy constructor that creates a new vector with the same elements as another vector.
+     *   - A destructor that deallocates the memory used by the vector.
+     *   - An assignment operator that copies the elements of another vector or an initializer list to this vector.
+     *   - An operator[] overload that returns a reference to the element at a given index.
+     *   - push_back and pop_back functions for adding and removing elements from the back of the vector.
+     *   - size and empty functions for getting the current size and checking if the vector is empty.
+     *   - front function for getting the first element in the vector.
+     *   - clear function for removing all elements from the vector.
+     *   - insert function for inserting an element at a given position.
+     *   - back function for getting the last element in the vector.
+     *
+     * The implementation also includes two private member functions, expand and shrink, which increase or decrease the capacity of the vector as needed.
+     *
+     * @tparam T The type of elements stored in the vector.
+     */
     template <class T>
     class vector{
     private:
