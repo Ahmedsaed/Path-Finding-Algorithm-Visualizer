@@ -18,7 +18,6 @@ namespace udtl {
 	 *   - A push function that adds an element to the top of the stack.
 	 *   - A pop function that removes the element at the top of the stack.
 	 *   - A top function that returns a reference to the element at the top of the stack.
-	 *   - A print function that prints the elements of the stack to the console.
 	 *
 	 * The implementation also includes a private node struct that represents a single node
 	 * in the stack, with a data member to store the element and a next member to point to
@@ -40,7 +39,6 @@ namespace udtl {
 		void push(t val);
 		void pop();
 		t& top();
-		void print();
 
 	private:
 		struct node {
