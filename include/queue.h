@@ -39,6 +39,7 @@ namespace udtl {
 	{
 	public:
 		queue();
+		~queue();
 		bool empty();
 		void push(t val);
 		void pop();

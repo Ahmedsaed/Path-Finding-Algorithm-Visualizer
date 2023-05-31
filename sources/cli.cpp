@@ -47,7 +47,7 @@ int main(void)
 	getline(cin, algorithm);
 
 	udtl::vector<std::string> path;
-	
+
 	if (algorithm == "Uniform Cost Search")
 		path = uniformCostSearch(start, end);
 	else if (algorithm == "Breath First Search")

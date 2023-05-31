@@ -1,6 +1,6 @@
 #include <bits/stdc++.h>
-#include "../include/romania.h"
-#include "../include/priority_queue.h"
+#include "../../include/romania.h"
+#include "../../include/priority_queue.h"
 using namespace std;
 
 int main()
@@ -23,16 +23,19 @@ int main()
         hand_made.push(test_cases[i]);
     }
 
+    if (hand_made.top() != built_in.top())
+    {
+        rv = -1;
+        cout << "top() is not working!!!!\n";
+        cout << "hand_made.top() = " << hand_made.top() << "\n";
+        cout << "built_in.top() = " << built_in.top() << "\n";
+    }
+
     built_in.pop();
     hand_made.pop();
     built_in.pop();
     hand_made.pop();
 
-    if (hand_made.top() != built_in.top())
-    {
-        rv = -1;
-        cout << "top() is not working!!!!\n";
-    }
     if (hand_made.empty() != built_in.empty())
     {
         rv = -1;

@@ -11,6 +11,16 @@ udtl::queue<t>::queue()
 }
 
 template <class t>
+udtl::queue<t>::~queue()
+{
+	while (!empty())
+		pop();
+
+	m_front = m_rear = NULL;
+	m_len = 0;
+}
+
+template <class t>
 bool udtl::queue<t>::empty()
 {
 	return m_front == NULL;
@@ -39,14 +49,16 @@ template <class t>
 void udtl::queue<t>::pop()
 {
 	if (empty())
-		std::cout << "Sorry, The queue is Empty...\n";
+		throw std::out_of_range("The queue is Empty...\n");
 	else
 	{
 		node *temp = m_front;
 		m_front = m_front->next;
-		temp = temp->next = NULL;
 		delete temp;
 		m_len--;
+
+		if (empty())
+			m_rear = NULL;
 	}
 }
 

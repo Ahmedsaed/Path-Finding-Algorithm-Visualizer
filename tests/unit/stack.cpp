@@ -1,6 +1,6 @@
 #include <bits/stdc++.h>
-#include "romania.h"
-#include "stack.h"
+#include "../../include/romania.h"
+#include "../../include/stack.h"
 using namespace std;
 
 int main()

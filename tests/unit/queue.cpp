@@ -1,6 +1,6 @@
 #include <bits/stdc++.h>
-#include "romania.h"
-#include "queue.h"
+#include "../../include/romania.h"
+#include "../../include/queue.h"
 using namespace std;
 
 int main()

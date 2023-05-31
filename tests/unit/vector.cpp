@@ -1,6 +1,6 @@
 #include <bits/stdc++.h>
-#include "romania.h"
-#include "vector.h"
+#include "../../include/romania.h"
+#include "../../include/vector.h"
 using namespace std;
 
 int main()
@@ -19,21 +19,8 @@ int main()
 
     for (int i = 0; i < 6; i++)
     {
-        if (i < 2)
-        {
-            built_in.insert(built_in.begin() + 1, test_cases[i]);
-            hand_made.insert(hand_made.begin() + 1, test_cases[i]);
-        }
-        else if (i < 4)
-        {
-            built_in.insert(built_in.end() - 1, test_cases[i]);
-            hand_made.insert(hand_made.end() - 1, test_cases[i]);
-        }
-        else
-        {
-            built_in.push_back(test_cases[i]);
-            hand_made.push_back(test_cases[i]);
-        }
+        built_in.push_back(test_cases[i]);
+        hand_made.push_back(test_cases[i]);
     }
 
     built_in.pop_back();
@@ -63,6 +50,7 @@ int main()
     if (hand_made.empty() != built_in.empty())
     {
         rv = -1;
+        cout << "empty() failed!!!!\n";
     }
 
     return (rv);
