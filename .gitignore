@@ -9,3 +9,4 @@ objects
 !.vscode/extensions.json
 *.pro.user
 images
+*pycache*

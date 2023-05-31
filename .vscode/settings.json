@@ -98,5 +98,6 @@
     ],
     "cSpell.words": [
         "CFLAGS"
-    ]
+    ],
+    "C_Cpp.errorSquiggles": "disabled"
 }

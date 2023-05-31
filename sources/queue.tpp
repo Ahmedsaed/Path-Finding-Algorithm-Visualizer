@@ -77,13 +77,13 @@ template<class t>
 t udtl::queue<t>::back()
 {
 
-if (empty())
+	if (empty())
 	{
 		std::cout << "Sorry, The queue is Empty...\n";
 		return 0;
 	}
 	else
-	return m_rear->data;
+		return m_rear->data;
 }
 template <class t>
 int udtl::queue<t>::size()
