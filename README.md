@@ -16,6 +16,9 @@
 
 The Path Finding Algorithm Visualizer is implemented in C++ using the Qt framework. It provides a user-friendly interface where users can define a start point and an end point. They can then choose a path finding algorithm to visualize its execution on the graph. The visualization includes the exploration of nodes, the generation of the path, and the highlighting of the shortest path.
 
+[Screencast from 2023-05-31 00-25-42.webm](https://github.com/Ahmedsaed/Path-Finding-Algorithm-Visualizer/assets/37080003/34d5b4eb-1742-4443-a634-6e5c94c69fcc)
+
+
 ## Project Structure
 ```
 Path-Finding-Algorithm-Visualizer
