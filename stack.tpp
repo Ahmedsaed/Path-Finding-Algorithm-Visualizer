@@ -24,7 +24,6 @@ void udtl::stack<t>::pop()
 	{
 		node* temp = m_top;
 		m_top = m_top->next;
-		temp = temp->next = NULL;
 		delete temp;
 	}
 }
