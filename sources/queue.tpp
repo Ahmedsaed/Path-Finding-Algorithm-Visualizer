@@ -81,6 +81,13 @@ t udtl::queue<t>::back()
 template <class t>
 int udtl::queue<t>::size()
 {
+
+if (empty())
+	{
+		std::cout << "Sorry, The queue is Empty...\n";
+		return 0;
+	}
+	else
 	return m_len;
 }
 
