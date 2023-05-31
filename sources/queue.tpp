@@ -76,6 +76,13 @@ t udtl::queue<t>::front()
 template<class t>
 t udtl::queue<t>::back()
 {
+
+if (empty())
+	{
+		std::cout << "Sorry, The queue is Empty...\n";
+		return 0;
+	}
+	else
 	return m_rear->data;
 }
 template <class t>
