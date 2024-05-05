@@ -2,7 +2,6 @@
 #include "mainwindow.h"
 #include <QComboBox>
 #include <QPushButton>
-#include <QSpinBox>
 #include <QVBoxLayout>
 #include <QStringList>
 #include <QtMath>
@@ -23,7 +22,8 @@ MainWindow::MainWindow(QWidget *parent)
     QComboBox *sourceComboBox = new QComboBox(this);
     QComboBox *destinationComboBox = new QComboBox(this);
     QComboBox *algorithmComboBox = new QComboBox(this);
-    QSpinBox *depthLimitSpinBox = new QSpinBox(this);
+    depthLimitLabel = new QLabel("Depth Limit", this);
+    depthLimitSpinBox = new QSpinBox(this);
     QPushButton *startButton = new QPushButton("Start", this);
 
     title->setStyleSheet("font-size: 18px; font-weight: bold; color: white;");
@@ -37,6 +37,9 @@ MainWindow::MainWindow(QWidget *parent)
     algorithmComboBox->setPlaceholderText("Algorithm");
     algorithmComboBox->setCurrentIndex(-1);
     depthLimitSpinBox->setValue(1);
+    depthLimitLabel->setVisible(false);
+    depthLimitLabel->setStyleSheet("font-size: 12px; color: white;");
+    depthLimitSpinBox->setVisible(false);
 
     // Create the sidebar layout
     QVBoxLayout *sidebarLayout = new QVBoxLayout;
@@ -45,6 +48,7 @@ MainWindow::MainWindow(QWidget *parent)
     sidebarLayout->addWidget(sourceComboBox);
     sidebarLayout->addWidget(destinationComboBox);
     sidebarLayout->addWidget(algorithmComboBox);
+    sidebarLayout->addWidget(depthLimitLabel);
     sidebarLayout->addWidget(depthLimitSpinBox);
     sidebarLayout->addWidget(startButton);
 
@@ -158,6 +162,15 @@ void MainWindow::handleDestinationComboBox(int index)
 void MainWindow::handleAlgorithmComboBox(int index)
 {
     algo = algorithms_list[index];
+
+    if (algo == "Depth Limited Search") {
+        depthLimitLabel->setVisible(true);
+        depthLimitSpinBox->setVisible(true);
+    }
+    else {
+        depthLimitLabel->setVisible(false);
+        depthLimitSpinBox->setVisible(false);
+    }
 }
 
 void MainWindow::handleDepthLimitSpinBox(int value)

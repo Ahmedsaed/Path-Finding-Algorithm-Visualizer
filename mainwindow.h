@@ -8,6 +8,9 @@
 #include <string>
 #include "graphnode.h"
 #include "algorithm.h"
+#include <QSpinBox>
+#include <QLabel>
+
 
 class MainWindow : public QMainWindow
 {
@@ -32,6 +35,9 @@ private:
     QString algo = "";
     int algo_limit = 1;
     std::vector<GraphEdge*> highlightedEdges;
+
+    QSpinBox *depthLimitSpinBox;
+    QLabel *depthLimitLabel;
 
 private slots:
     void handleSourceComboBox(int index);
