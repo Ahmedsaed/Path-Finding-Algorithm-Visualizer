@@ -9,14 +9,11 @@ on:
       - main
 
 jobs:
-  build:
-    runs-on: ${{ matrix.os }}
-
-    strategy:
-      matrix:
-        os: [ubuntu-latest, windows-latest]
-        qt_version: [6.2.*] # Add Qt versions as needed
-
+  #
+  # Linux build
+  #
+  linux-build:
+    runs-on: ubuntu-latest
     steps:
     - name: Checkout repository
       uses: actions/checkout@v4
@@ -24,7 +21,7 @@ jobs:
     - name: Set up Qt
       uses: jurplel/install-qt-action@v3
       with:
-        version: ${{ matrix.qt_version }}
+        version: 6.2.*
 
     - name: Install dependencies
       if: matrix.os == 'ubuntu-latest'
@@ -34,7 +31,7 @@ jobs:
       run: |
         mkdir build
         cd build
-        qmake ..
+        qmake .. CONFIG+=release
         make
 
     - name: Archive artifacts
@@ -45,3 +42,38 @@ jobs:
 
     - name: Display artifacts path
       run: echo "Artifacts uploaded to ${{ steps.upload-artifact.outputs.artifact_path }}"
+
+
+  #
+  # Windows build
+  #
+  build-windows:
+    runs-on: windows-latest
+    steps:
+      - name: Checkout repository and submodules
+        uses: actions/checkout@v4
+        with:
+          submodules: recursive
+      
+      - name: Configure MSVC
+        uses: ilammy/msvc-dev-cmd@v1
+        with:
+          arch: x64
+          spectre: true
+
+      - name: Install Qt
+        uses: jurplel/install-qt-action@v3
+ 
+      - name: Compile
+        run: |
+             qmake Path-Finding-Algorithm-Visualizer.pro CONFIG+=release
+             nmake
+             
+      - name: Archive artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: QtApp
+          path: build
+
+      - name: Display artifacts path
+        run: echo "Artifacts uploaded to ${{ steps.upload-artifact.outputs.artifact_path }}"
