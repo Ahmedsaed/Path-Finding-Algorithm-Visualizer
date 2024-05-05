@@ -15,7 +15,7 @@ jobs:
     strategy:
       matrix:
         os: [ubuntu-latest, windows-latest]
-        qt_version: [6.0.0] # Add Qt versions as needed
+        qt_version: [6.2.*] # Add Qt versions as needed
 
     steps:
     - name: Checkout repository
