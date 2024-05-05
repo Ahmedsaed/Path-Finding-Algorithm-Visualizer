@@ -77,18 +77,49 @@ jobs:
 
       - name: Install Qt
         uses: jurplel/install-qt-action@v3
+
+      #
+      # Install NSIS
+      #  
+      - name: Install NSIS
+        run: |
+             Invoke-Expression (New-Object System.Net.WebClient).DownloadString('https://get.scoop.sh')
+             scoop bucket add extras
+             scoop install nsis
  
       - name: Compile
         run: |
              qmake Path-Finding-Algorithm-Visualizer.pro CONFIG+=release
              nmake
+
+      #
+      # Copy Qt DLLs, compiler runtime & application icon
+      #       
+      - name: Deploy
+        run: |
+             mkdir bin
+             move release/Path-Finding-Algorithm-Visualizer.exe bin
+             windeployqt bin/Path-Finding-Algorithm-Visualizer.exe -qmldir="assets\\qml" --compiler-runtime
+             mkdir "Path Finding Algorithm Visualizer"
+             move bin "Path Finding Algorithm Visualizer"
+             xcopy deploy\windows\resources\icon.ico "${{env.APPLICATION}}"
+
+      #
+      # Create NSIS installer
+      #
+      - name: Make NSIS installer
+        run: |
+             move "Path Finding Algorithm Visualizer" deploy\windows\nsis\
+             cd deploy\windows\nsis
+             makensis /X"SetCompressor /FINAL lzma" setup.nsi
+             ren *.exe Path-Finding-Algorithm-Visualizer-Windows.exe
              
       - name: Archive artifacts
         id: upload-artifacts-windows
         uses: actions/upload-artifact@v4
         with:
           name: "Windows Build"
-          path: release/Path-Finding-Algorithm-Visualizer.exe
+          path: deploy/windows/nsis/Path-Finding-Algorithm-Visualizer-Windows.exe
 
       - name: Display artifacts path
         run: echo "Artifacts uploaded to ${{ steps.upload-artifacts-windows.outputs.artifact_path }}"
@@ -100,6 +131,6 @@ jobs:
         uses: svenstaro/upload-release-action@v2
         with:
           repo_token: ${{ secrets.GITHUB_TOKEN }}
-          file: release/Path-Finding-Algorithm-Visualizer.exe
+          file: deploy/windows/nsis/Path-Finding-Algorithm-Visualizer-Windows.exe
           asset_name: Path-Finding-Algorithm-Visualizer-windows-amd64.exe
           tag: ${{ github.ref }}
