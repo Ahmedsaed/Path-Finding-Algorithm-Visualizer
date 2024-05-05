@@ -56,7 +56,7 @@ jobs:
         repo_token: ${{ secrets.GITHUB_TOKEN }}
         file: build/Path-Finding-Algorithm-Visualizer
         asset_name: Path-Finding-Algorithm-Visualizer-linux-amd64
-        tag: ${{ github.ref }}
+        tag: ${{ github.sha }}
 
   #
   # Windows build
@@ -133,4 +133,4 @@ jobs:
           repo_token: ${{ secrets.GITHUB_TOKEN }}
           file: deploy/windows/nsis/Path-Finding-Algorithm-Visualizer-Windows.exe
           asset_name: Path-Finding-Algorithm-Visualizer-windows-amd64.exe
-          tag: ${{ github.ref }}
+          tag: ${{ github.sha }}
