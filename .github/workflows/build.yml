@@ -19,12 +19,12 @@ jobs:
 
     steps:
     - name: Checkout repository
-      uses: actions/checkout@v2
+      uses: actions/checkout@v4
       
     - name: Set up Qt
-      uses: jurplel/install-qt-action@v2
+      uses: jurplel/install-qt-action@v3
       with:
-        qt-version: ${{ matrix.qt_version }}
+        version: ${{ matrix.qt_version }}
 
     - name: Install dependencies
       if: matrix.os == 'ubuntu-latest'
@@ -38,7 +38,7 @@ jobs:
         make
 
     - name: Archive artifacts
-      uses: actions/upload-artifact@v2
+      uses: actions/upload-artifact@v4
       with:
         name: QtApp
         path: build
