@@ -24,5 +24,6 @@ udtl::vector<std::string> depthFirstSearch(const std::string& source, const std:
 udtl::vector<std::string> bidirectionalSearch(const std::string& source, const std::string& destination);
 udtl::vector<std::string> greedyBFS(const std::string& source, const std::string& destination);
 udtl::vector<std::string> AStarSearch(const std::string& source, const std::string& destination);
+udtl::vector<std::string> DijkstraSearch(const std::string& source, const std::string& destination);
 
 #endif

@@ -89,8 +89,6 @@ MainWindow::MainWindow(QWidget *parent)
 
 void MainWindow::generateGraph()
 {
-    const int padding = 30; // Adjust the padding value as desired
-
     // Create graph nodes and set their positions
     graphNodes.clear(); // Clear existing nodes
     addGraphNode("Arad", 50, 150);
@@ -186,6 +184,8 @@ void MainWindow::handleStartButtonClicked()
         path = AStarSearch(source.toStdString(), destination.toStdString());
     else if (algo == "Greedy BFS")
         path = greedyBFS(source.toStdString(), destination.toStdString());
+    else if (algo == "Dijkstra")
+        path = DijkstraSearch(source.toStdString(), destination.toStdString());
 
     if (path.size() != 0)
         highlight_path(path);

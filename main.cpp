@@ -13,7 +13,8 @@ QStringList algorithms_list = {
     "Iterative Deepening DFS",
     "Bidirectional Search",
     "Greedy BFS",
-    "A* Search"
+    "A* Search",
+    "Dijkstra"
 };
 
 

@@ -13,9 +13,9 @@ SOURCES += \
     bds.cpp \
     bfs.cpp \
     dfs.cpp \
+    dijkstra.cpp \
     dls.cpp \
     gbfs.cpp \
-    graphnode.cpp \
     ids.cpp \
     main.cpp \
     mainwindow.cpp \
