@@ -1,4 +1,4 @@
-name: Build Qt App
+name: Build and Release Qt App
 
 on:
   push:
@@ -35,14 +35,14 @@ jobs:
         make
 
     - name: Archive artifacts
+      id: upload-artifacts-linux
       uses: actions/upload-artifact@v4
       with:
         name: "Linux Build"
         path: build
 
     - name: Display artifacts path
-      run: echo "Artifacts uploaded to ${{ steps.upload-artifact.outputs.artifact_path }}"
-
+      run: echo "Artifacts uploaded to ${{ steps.upload-artifacts-linux.outputs.artifact_path }}"
 
   #
   # Windows build
@@ -70,10 +70,51 @@ jobs:
              nmake
              
       - name: Archive artifacts
+        id: upload-artifacts-windows
         uses: actions/upload-artifact@v4
         with:
           name: "Windows Build"
           path: release
 
       - name: Display artifacts path
-        run: echo "Artifacts uploaded to ${{ steps.upload-artifact.outputs.artifact_path }}"
+        run: echo "Artifacts uploaded to ${{ steps.upload-artifacts-windows.outputs.artifact_path }}"
+
+  #
+  # Release
+  #
+  release:
+    needs: [linux-build, build-windows]
+    runs-on: ubuntu-latest
+    steps:
+      - name: Create Release
+        id: create_release
+        uses: actions/create-release@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          tag_name: ${{ github.sha }}
+          release_name: Release ${{ github.sha }}
+          body: |
+            Release for commit ${{ github.sha }}
+          draft: false
+          prerelease: false
+
+      - name: Upload Linux Artifacts
+        uses: actions/upload-release-asset@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          upload_url: ${{ steps.create_release.outputs.upload_url }}
+          asset_path: ${{ needs.linux-build.outputs.upload-artifacts-linux }}
+          asset_name: "Linux_Build_${{ github.sha }}.zip"
+          asset_content_type: application/zip
+
+      - name: Upload Windows Artifacts
+        uses: actions/upload-release-asset@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          upload_url: ${{ steps.create_release.outputs.upload_url }}
+          asset_path: ${{ needs.build-windows.outputs.upload-artifacts-windows }}
+          asset_name: "Windows_Build_${{ github.sha }}.zip"
+          asset_content_type: application/zip
