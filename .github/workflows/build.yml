@@ -57,6 +57,7 @@ jobs:
         file: build/Path-Finding-Algorithm-Visualizer
         asset_name: Path-Finding-Algorithm-Visualizer-linux-amd64
         tag: ${{ github.sha }}
+        overwrite: true
 
   #
   # Windows build
@@ -100,16 +101,16 @@ jobs:
              mkdir bin
              move release/Path-Finding-Algorithm-Visualizer.exe bin
              windeployqt bin/Path-Finding-Algorithm-Visualizer.exe -qmldir="assets\\qml" --compiler-runtime
-             mkdir "Path Finding Algorithm Visualizer"
-             move bin "Path Finding Algorithm Visualizer"
-             xcopy deploy\windows\resources\icon.ico "${{env.APPLICATION}}"
+             mkdir "Path-Finding-Algorithm-Visualizer"
+             move bin "Path-Finding-Algorithm-Visualizer"
+             xcopy deploy\windows\resources\icon.ico "Path-Finding-Algorithm-Visualizer"
 
       #
       # Create NSIS installer
       #
       - name: Make NSIS installer
         run: |
-             move "Path Finding Algorithm Visualizer" deploy\windows\nsis\
+             move "Path-Finding-Algorithm-Visualizer" deploy\windows\nsis\
              cd deploy\windows\nsis
              makensis /X"SetCompressor /FINAL lzma" setup.nsi
              ren *.exe Path-Finding-Algorithm-Visualizer-Windows.exe
@@ -134,3 +135,4 @@ jobs:
           file: deploy/windows/nsis/Path-Finding-Algorithm-Visualizer-Windows.exe
           asset_name: Path-Finding-Algorithm-Visualizer-windows-amd64.exe
           tag: ${{ github.sha }}
+          overwrite: true
