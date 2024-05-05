@@ -44,6 +44,17 @@ jobs:
     - name: Display artifacts path
       run: echo "Artifacts uploaded to ${{ steps.upload-artifacts-linux.outputs.artifact_path }}"
 
+    #
+    # Release
+    #
+    - name: Upload binaries to release
+      uses: svenstaro/upload-release-action@v2
+      with:
+        repo_token: ${{ secrets.GITHUB_TOKEN }}
+        file: release/Path-Finding-Algorithm-Visualizer
+        asset_name: Path-Finding-Algorithm-Visualizer-linux-amd64
+        tag: ${{ github.ref }}
+
   #
   # Windows build
   #
@@ -74,26 +85,18 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: "Windows Build"
-          path: release
+          path: release/Path-Finding-Algorithm-Visualizer.exe
 
       - name: Display artifacts path
         run: echo "Artifacts uploaded to ${{ steps.upload-artifacts-windows.outputs.artifact_path }}"
 
-  #
-  # Release
-  #
-  release:
-    needs: [linux-build, build-windows]
-    runs-on: ubuntu-latest
-    steps:
-      - name: Create Release
-        id: create_release
-        uses: ncipollo/release-action@v1
-        env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      #
+      # Release
+      #
+      - name: Upload binaries to release
+        uses: svenstaro/upload-release-action@v2
         with:
-          generateReleaseNotes: true
-          tag: ${{ github.sha }}
-          body: |
-            Release for commit ${{ github.sha }}
-          artifacts: ${{ needs.linux-build.outputs.upload-artifacts-linux }},${{ needs.build-windows.outputs.upload-artifacts-windows }}
+          repo_token: ${{ secrets.GITHUB_TOKEN }}
+          file: release/Path-Finding-Algorithm-Visualizer.exe
+          asset_name: Path-Finding-Algorithm-Visualizer-windows-amd64.exe
+          tag: ${{ github.ref }}
