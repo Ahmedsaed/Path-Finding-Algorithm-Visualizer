@@ -1,0 +1,47 @@
+name: Build Qt App
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ${{ matrix.os }}
+
+    strategy:
+      matrix:
+        os: [ubuntu-latest, windows-latest]
+        qt_version: [6.0.0] # Add Qt versions as needed
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v2
+      
+    - name: Set up Qt
+      uses: jurplel/install-qt-action@v2
+      with:
+        qt-version: ${{ matrix.qt_version }}
+
+    - name: Install dependencies
+      if: matrix.os == 'ubuntu-latest'
+      run: sudo apt-get install -y build-essential
+
+    - name: Configure and build
+      run: |
+        mkdir build
+        cd build
+        qmake ..
+        make
+
+    - name: Archive artifacts
+      uses: actions/upload-artifact@v2
+      with:
+        name: QtApp
+        path: build
+
+    - name: Display artifacts path
+      run: echo "Artifacts uploaded to ${{ steps.upload-artifact.outputs.artifact_path }}"
