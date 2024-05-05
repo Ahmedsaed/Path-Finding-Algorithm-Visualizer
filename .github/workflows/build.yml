@@ -8,9 +8,6 @@ on:
     branches:
       - main
 
-permissions:
-  contents: write
-
 jobs:
   #
   # Linux build
@@ -36,7 +33,6 @@ jobs:
         cd build
         qmake .. CONFIG+=release
         make
-
     - name: Archive artifacts
       id: upload-artifacts-linux
       uses: actions/upload-artifact@v4
@@ -46,18 +42,6 @@ jobs:
 
     - name: Display artifacts path
       run: echo "Artifacts uploaded to ${{ steps.upload-artifacts-linux.outputs.artifact_path }}"
-
-    #
-    # Release
-    #
-    - name: Upload binaries to release
-      uses: svenstaro/upload-release-action@v2
-      with:
-        repo_token: ${{ secrets.GITHUB_TOKEN }}
-        file: build/Path-Finding-Algorithm-Visualizer
-        asset_name: Path-Finding-Algorithm-Visualizer-linux-amd64
-        tag: ${{ github.ref }}
-        overwrite: true
 
   #
   # Windows build
@@ -78,59 +62,58 @@ jobs:
 
       - name: Install Qt
         uses: jurplel/install-qt-action@v3
-
-      #
-      # Install NSIS
-      #  
-      - name: Install NSIS
-        run: |
-             Invoke-Expression (New-Object System.Net.WebClient).DownloadString('https://get.scoop.sh')
-             scoop bucket add extras
-             scoop install nsis
  
       - name: Compile
         run: |
              qmake Path-Finding-Algorithm-Visualizer.pro CONFIG+=release
              nmake
-
-      #
-      # Copy Qt DLLs, compiler runtime & application icon
-      #       
-      - name: Deploy
-        run: |
-             mkdir bin
-             move release/Path-Finding-Algorithm-Visualizer.exe bin
-             windeployqt bin/Path-Finding-Algorithm-Visualizer.exe -qmldir="assets\\qml" --compiler-runtime
-             mkdir build
-             move bin build
-
-      #
-      # Create NSIS installer
-      #
-      - name: Make NSIS installer
-        run: |
-             cd build/bin
-             makensis /X"SetCompressor /FINAL lzma" setup.nsi
-             ren *.exe Path-Finding-Algorithm-Visualizer-Windows.exe
              
       - name: Archive artifacts
         id: upload-artifacts-windows
         uses: actions/upload-artifact@v4
         with:
           name: "Windows Build"
-          path: build/Path-Finding-Algorithm-Visualizer-Windows.exe
+          path: release
 
       - name: Display artifacts path
         run: echo "Artifacts uploaded to ${{ steps.upload-artifacts-windows.outputs.artifact_path }}"
 
-      #
-      # Release
-      #
-      - name: Upload binaries to release
-        uses: svenstaro/upload-release-action@v2
+  #
+  # Release
+  #
+  release:
+    needs: [linux-build, build-windows]
+    runs-on: ubuntu-latest
+    steps:
+      - name: Create Release
+        id: create_release
+        uses: actions/create-release@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          repo_token: ${{ secrets.GITHUB_TOKEN }}
-          file: build/Path-Finding-Algorithm-Visualizer-Windows.exe
-          asset_name: Path-Finding-Algorithm-Visualizer-windows-amd64.exe
-          tag: ${{ github.ref }}
-          overwrite: true
+          tag_name: ${{ github.sha }}
+          release_name: Release ${{ github.sha }}
+          body: |
+            Release for commit ${{ github.sha }}
+          draft: false
+          prerelease: false
+
+      - name: Upload Linux Artifacts
+        uses: actions/upload-release-asset@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          upload_url: ${{ steps.create_release.outputs.upload_url }}
+          asset_path: ${{ needs.linux-build.outputs.upload-artifacts-linux }}
+          asset_name: "Linux_Build_${{ github.sha }}.zip"
+          asset_content_type: application/zip
+
+      - name: Upload Windows Artifacts
+        uses: actions/upload-release-asset@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          upload_url: ${{ steps.create_release.outputs.upload_url }}
+          asset_path: ${{ needs.build-windows.outputs.upload-artifacts-windows }}
+          asset_name: "Windows_Build_${{ github.sha }}.zip"
+          asset_content_type: application/zip
