@@ -103,7 +103,6 @@ jobs:
              windeployqt bin/Path-Finding-Algorithm-Visualizer.exe -qmldir="assets\\qml" --compiler-runtime
              mkdir "Path-Finding-Algorithm-Visualizer"
              move bin "Path-Finding-Algorithm-Visualizer"
-             xcopy deploy\windows\resources\icon.ico "Path-Finding-Algorithm-Visualizer"
 
       #
       # Create NSIS installer
