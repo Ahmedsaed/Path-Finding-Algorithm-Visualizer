@@ -93,6 +93,7 @@ jobs:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           generateReleaseNotes: true
+          tag: ${{ github.sha }}
           body: |
             Release for commit ${{ github.sha }}
           artifacts: ${{ needs.linux-build.outputs.upload-artifacts-linux }},${{ needs.build-windows.outputs.upload-artifacts-windows }}
