@@ -88,33 +88,11 @@ jobs:
     steps:
       - name: Create Release
         id: create_release
-        uses: actions/create-release@v1
+        uses: ncipollo/release-action@v1
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          tag_name: ${{ github.sha }}
-          release_name: Release ${{ github.sha }}
+          generateReleaseNotes: true
           body: |
             Release for commit ${{ github.sha }}
-          draft: false
-          prerelease: false
-
-      - name: Upload Linux Artifacts
-        uses: actions/upload-release-asset@v1
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        with:
-          upload_url: ${{ steps.create_release.outputs.upload_url }}
-          asset_path: ${{ needs.linux-build.outputs.upload-artifacts-linux }}
-          asset_name: "Linux_Build_${{ github.sha }}.zip"
-          asset_content_type: application/zip
-
-      - name: Upload Windows Artifacts
-        uses: actions/upload-release-asset@v1
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        with:
-          upload_url: ${{ steps.create_release.outputs.upload_url }}
-          asset_path: ${{ needs.build-windows.outputs.upload-artifacts-windows }}
-          asset_name: "Windows_Build_${{ github.sha }}.zip"
-          asset_content_type: application/zip
+          artifacts: ${{ needs.linux-build.outputs.upload-artifacts-linux }},${{ needs.build-windows.outputs.upload-artifacts-windows }}
